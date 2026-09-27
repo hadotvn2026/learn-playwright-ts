@@ -28,6 +28,7 @@
   <nav>
     <a href="#cases">Test case</a>
     <a href="#path">Lộ trình học</a>
+    <a href="#pom">Page Object Model</a>
   </nav>
   <span class="header-tag">Playwright · the-internet</span>
 </header>
@@ -66,6 +67,218 @@
     <p class="path-intro">Đi qua 26 điểm dừng từ dễ tới khó. Bấm vào chú mèo ở mỗi điểm dừng để nhảy tới test case tương ứng.</p>
     <div id="roadmap" class="roadmap"></div>
   </section>
+
+  <section id="pom" class="pom-section">
+    <div class="pom-head">
+      <span class="pom-badge">Architecture &amp; Design Pattern</span>
+      <h2>Mô hình Page Object Model (POM) &amp; Playwright Fixture</h2>
+      <p class="pom-lead">
+        Thiết kế theo chuẩn hướng dẫn TestingVN: Tách biệt cấu trúc UI, hành động (Actions) và kịch bản kiểm thử (Test Specs) kết hợp Fixture để tái sử dụng tối đa, giảm code trùng lặp và bảo trì dễ dàng khi UI thay đổi.
+      </p>
+    </div>
+
+    <!-- Sơ đồ kiến trúc Diagram -->
+    <div class="pom-card diagram-card">
+      <div class="pom-card-header">
+        <h3><span class="num-icon">📐</span> 1. Sơ đồ kiến trúc &amp; Luồng hoạt động (POM + Fixture)</h3>
+      </div>
+      <div class="pom-diagram-wrap">
+        <svg class="pom-svg" viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#c2410c" />
+            </marker>
+            <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+            </marker>
+          </defs>
+
+          <!-- Layer 1: Test Specs -->
+          <rect x="40" y="30" width="880" height="95" rx="10" fill="#fff" stroke="#1a1611" stroke-width="2"/>
+          <rect x="40" y="30" width="880" height="28" rx="10" fill="#1a1611"/>
+          <text x="60" y="50" fill="#fff" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13">TẦNG 1: TEST SPECIFICATIONS (KỊCH BẢN KIỂM THỬ) — tests/login.pom.spec.ts</text>
+          <rect x="60" y="68" width="410" height="44" rx="6" fill="#fdeede" stroke="#c2410c" stroke-width="1.5"/>
+          <text x="75" y="86" fill="#c2410c" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">test('login with valid credentials')</text>
+          <text x="75" y="102" fill="#57534e" font-size="12">await loginPage.login('tomsmith', 'SuperSecretPassword!')</text>
+
+          <rect x="490" y="68" width="410" height="44" rx="6" fill="#fdeede" stroke="#c2410c" stroke-width="1.5"/>
+          <text x="505" y="86" fill="#c2410c" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">test('login with invalid credentials')</text>
+          <text x="505" y="102" fill="#57534e" font-size="12">await loginPage.login('invalidUser', 'invalidPassword')</text>
+
+          <!-- Arrows: Tests -> Fixture -->
+          <path d="M 480 125 L 480 165" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="6,4" marker-end="url(#arrow-blue)"/>
+          <text x="492" y="150" fill="#0284c7" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">Inject fixture { loginPage }</text>
+
+          <!-- Layer 2: Custom Fixture -->
+          <rect x="180" y="170" width="600" height="85" rx="10" fill="#f0f9ff" stroke="#0284c7" stroke-width="2"/>
+          <rect x="180" y="170" width="600" height="26" rx="10" fill="#0284c7"/>
+          <text x="200" y="188" fill="#fff" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13">TẦNG 2: PLAYWRIGHT FIXTURE EXTENSION — pages/base.ts</text>
+          <text x="200" y="215" fill="#0369a1" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600">base.extend&lt;{ loginPage: LoginPage }&gt;({ ... })</text>
+          <text x="200" y="238" fill="#334155" font-size="12">Tự động khởi tạo `new LoginPage(page)` &amp; truyền qua `use(...)` trước mỗi test</text>
+
+          <!-- Arrows: Fixture -> POM -->
+          <path d="M 480 255 L 480 295" stroke="#c2410c" stroke-width="2.5" marker-end="url(#arrow)"/>
+          <text x="492" y="280" fill="#c2410c" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">Instantiate &amp; wrap Page</text>
+
+          <!-- Layer 3: Page Object Class -->
+          <rect x="40" y="300" width="880" height="145" rx="10" fill="#fff" stroke="#1a1611" stroke-width="2"/>
+          <rect x="40" y="300" width="880" height="28" rx="10" fill="#1a1611"/>
+          <text x="60" y="320" fill="#fff" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13">TẦNG 3: PAGE OBJECT CLASS (LOCATORS &amp; ACTIONS) — pages/login.page.ts</text>
+          
+          <rect x="60" y="340" width="410" height="90" rx="6" fill="#f5f2eb" stroke="#e7e0d4" stroke-width="1.5"/>
+          <text x="75" y="360" fill="#1a1611" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700">📦 UI Elements (Object Repository)</text>
+          <text x="75" y="380" fill="#57534e" font-family="'JetBrains Mono', monospace" font-size="11">• usernameInput = page.locator('#username')</text>
+          <text x="75" y="398" fill="#57534e" font-family="'JetBrains Mono', monospace" font-size="11">• passwordInput = page.locator('#password')</text>
+          <text x="75" y="416" fill="#57534e" font-family="'JetBrains Mono', monospace" font-size="11">• loginButton &amp; flashMessage</text>
+
+          <rect x="490" y="340" width="410" height="90" rx="6" fill="#f5f2eb" stroke="#e7e0d4" stroke-width="1.5"/>
+          <text x="505" y="360" fill="#1a1611" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700">⚡ Page Actions (Phương thức nghiệp vụ)</text>
+          <text x="505" y="380" fill="#15803d" font-family="'JetBrains Mono', monospace" font-size="11">• async goto() { await page.goto('/login'); }</text>
+          <text x="505" y="398" fill="#15803d" font-family="'JetBrains Mono', monospace" font-size="11">• async login(u, p) { fill &amp; click button }</text>
+          <text x="505" y="416" fill="#15803d" font-family="'JetBrains Mono', monospace" font-size="11">• async getFlashmessage() { return text }</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 3 Cột lợi ích POM -->
+    <div class="pom-benefits">
+      <div class="benefit-card">
+        <span class="benefit-badge">1. Tách biệt quan tâm</span>
+        <h4>Không lẫn lộn Locator &amp; Test Logic</h4>
+        <p>File spec chỉ tập trung vào nghiệp vụ (business flow) và assert kết quả. Toàn bộ selector gom vào Page Object class.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-badge">2. Dễ bảo trì (Maintainable)</span>
+        <h4>Thay đổi UI chỉ sửa 1 nơi duy nhất</h4>
+        <p>Khi ID nút bấm hoặc input thay đổi (ví dụ <code>#username</code> sang <code>#user_login</code>), chỉ cần sửa 1 dòng trong <code>LoginPage</code>.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-badge">3. Playwright Fixture</span>
+        <h4>Khởi tạo tự động &amp; dọn dẹp an toàn</h4>
+        <p>Nhờ <code>base.extend</code>, fixture <code>{ loginPage }</code> được inject trực tiếp vào từng test case, loại bỏ boilerplate <code>new LoginPage(page)</code>.</p>
+      </div>
+    </div>
+
+    <!-- Mapping Code Tabs -->
+    <div class="pom-card code-mapping-card">
+      <div class="pom-card-header">
+        <div>
+          <h3><span class="num-icon">💻</span> 2. Mapping Code chi tiết (Theo chuẩn TestingVN)</h3>
+          <p class="pom-card-sub">Chuyển hóa từ sơ đồ kiến trúc sang 3 file mã nguồn thực tế trong dự án.</p>
+        </div>
+      </div>
+
+      <div class="pom-tabs">
+        <button class="pom-tab-btn active" data-tab="tab-page">Bước 1: pages/login.page.ts</button>
+        <button class="pom-tab-btn" data-tab="tab-fixture">Bước 2: pages/base.ts (Fixture)</button>
+        <button class="pom-tab-btn" data-tab="tab-spec">Bước 3: tests/login.pom.spec.ts</button>
+      </div>
+
+      <!-- Tab 1: Page Object -->
+      <div id="tab-page" class="pom-tab-pane active">
+        <div class="tab-pane-info">
+          <strong>1. Page Object Class (login.page.ts)</strong>: Khai báo các thuộc tính <code>Locator</code> trong constructor và các hàm nghiệp vụ (<code>goto</code>, <code>login</code>, <code>getFlashmessage</code>).
+        </div>
+        <div class="code-head">
+          <span class="file-tag">pages/login.page.ts</span>
+          <span class="lang-tag">TypeScript</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-typescript">import { Page, Locator } from '@playwright/test';
+
+export class LoginPage {
+    readonly page: Page;
+    readonly usernameInput: Locator;
+    readonly passwordInput: Locator;
+    readonly loginButton: Locator;
+    readonly flashMessage: Locator;
+
+    constructor(page: Page) {
+        this.page = page;
+        this.usernameInput = page.locator('#username');
+        this.passwordInput = page.locator('#password');
+        this.loginButton = page.locator('button[type="submit"]');
+        this.flashMessage = page.locator('#flash');
+    }
+
+    async goto() {
+        await this.page.goto('https://the-internet.herokuapp.com/login');
+    }
+
+    async login(username: string, password: string) {
+        await this.usernameInput.fill(username);
+        await this.passwordInput.fill(password);
+        await this.loginButton.click();
+    }
+
+    async getFlashmessage() {
+        return await this.flashMessage.textContent();
+    }
+}</code></pre>
+      </div>
+
+      <!-- Tab 2: Fixture -->
+      <div id="tab-fixture" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>2. Playwright Fixture Extension (base.ts)</strong>: Mở rộng <code>base.extend&lt;MyFixtures&gt;</code> để đóng gói việc khởi tạo <code>new LoginPage(page)</code> thành fixture dùng chung toàn bộ test suite.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">pages/base.ts</span>
+          <span class="lang-tag">TypeScript</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-typescript">import { test as base } from '@playwright/test';
+import { LoginPage } from './login.page';
+
+type MyFixtures = {
+    loginPage: LoginPage;
+};
+
+export const test = base.extend&lt;MyFixtures&gt;({
+    loginPage: async ({ page }, use) => {
+        // Tự động khởi tạo instance LoginPage truyền vào từng test
+        const loginPage = new LoginPage(page);
+        await use(loginPage);
+    }
+});
+
+export { expect } from '@playwright/test';</code></pre>
+      </div>
+
+      <!-- Tab 3: Spec -->
+      <div id="tab-spec" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>3. Clean Test Spec (login.pom.spec.ts)</strong>: Import <code>test, expect</code> từ <code>base.ts</code>. Fixture <code>{ loginPage }</code> được tự động inject vào hook và test case.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">tests/login.pom.spec.ts</span>
+          <span class="lang-tag">TypeScript</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-typescript">import { test, expect } from '../pages/base';
+
+test.describe('Heroku App - Login with POM and Fixture', () => {
+    test.beforeEach(async ({ loginPage }) => {
+        await loginPage.goto();
+    });
+
+    test('login with valid credentials', async ({ loginPage }) => {
+        await loginPage.login('tomsmith', 'SuperSecretPassword!');
+        const messageText = await loginPage.getFlashmessage();
+        expect(messageText).toContain('You logged into a secure area!');
+    });
+
+    test('login with invalid credentials', async ({ loginPage }) => {
+        await loginPage.login('invalidUser', 'invalidPassword');
+        const messageText = await loginPage.getFlashmessage();
+        expect(messageText).toContain('Your username is invalid!');
+    });
+});</code></pre>
+      </div>
+    </div>
+
+  </section>
+
 </main>
 
 <footer>

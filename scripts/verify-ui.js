@@ -30,6 +30,19 @@ const path = require('path');
   const lightboxClosed = !(await page.locator('#lightbox-modal.active').isVisible());
   console.log('Lightbox closed properly:', lightboxClosed);
 
+  // Verify POM section
+  const pom = await page.$('#pom');
+  console.log('POM section exists:', !!pom);
+  const tabs = await page.$$('.pom-tab-btn');
+  console.log('POM tab count:', tabs.length);
+  await tabs[1].click();
+  const activePane2 = await page.$eval('.pom-tab-pane.active', el => el.id);
+  console.log('Active pane after click tab 2:', activePane2);
+  await tabs[2].click();
+  const activePane3 = await page.$eval('.pom-tab-pane.active', el => el.id);
+  console.log('Active pane after click tab 3:', activePane3);
+
+
   await browser.close();
   console.log('All verification steps succeeded!');
 })().catch(console.error);

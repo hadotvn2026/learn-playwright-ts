@@ -370,3 +370,176 @@ footer { border-top: 2px solid var(--ink); padding: 24px 32px; color: var(--mute
   .roadmap-route { width: 100%; margin-left: 0; }
 
 }
+
+
+/* =========================================================
+   PAGE OBJECT MODEL (POM) STYLES
+   ========================================================= */
+.pom-section {
+  margin-top: 56px;
+  padding-top: 36px;
+  border-top: 2px dashed var(--line);
+}
+.pom-head {
+  margin-bottom: 24px;
+}
+.pom-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+.pom-head h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+.pom-lead {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 850px;
+  margin: 0;
+}
+.pom-card {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  overflow: hidden;
+}
+.diagram-card {
+  padding: 20px;
+}
+.pom-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pom-card-header h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+}
+.pom-card-sub {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.pom-hint {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+.pom-diagram-wrap {
+  width: 100%;
+  overflow-x: auto;
+  background: #faf8f5;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+}
+.pom-svg {
+  min-width: 780px;
+  display: block;
+}
+.pom-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.benefit-card {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.benefit-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+.benefit-card h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+.benefit-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+.code-mapping-card {
+  padding: 20px;
+}
+.pom-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1.5px solid var(--line);
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.pom-tab-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  padding: 8px 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.pom-tab-btn:hover {
+  color: var(--ink);
+}
+.pom-tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.pom-tab-pane {
+  display: none;
+}
+.pom-tab-pane.active {
+  display: block;
+  animation: fadeIn 0.2s ease-in-out;
+}
+.tab-pane-info {
+  background: #fdf8f0;
+  border-left: 3px solid var(--accent);
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--ink);
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 14px;
+}
+@media (max-width: 800px) {
+  .pom-benefits {
+    grid-template-columns: 1fr;
+  }
+}
+

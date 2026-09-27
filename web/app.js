@@ -263,3 +263,41 @@ document.addEventListener('click', function(e) {
 renderRoadmap();
 
 
+
+
+/* POM Tabs & Copy handler */
+document.addEventListener('click', function(e) {
+  var tabBtn = e.target.closest('.pom-tab-btn');
+  if (tabBtn) {
+    var targetTabId = tabBtn.dataset.tab;
+    var card = tabBtn.closest('.code-mapping-card');
+    if (!card) return;
+    card.querySelectorAll('.pom-tab-btn').forEach(function(btn) { btn.classList.remove('active'); });
+    card.querySelectorAll('.pom-tab-pane').forEach(function(pane) { pane.classList.remove('active'); });
+    tabBtn.classList.add('active');
+    var targetPane = card.querySelector('#' + targetTabId);
+    if (targetPane) {
+      targetPane.classList.add('active');
+      var pre = targetPane.querySelector('pre');
+      if (pre && window.hljs) {
+        var codeEl = pre.querySelector('code');
+        if (codeEl && !codeEl.dataset.highlighted) {
+          window.hljs.highlightElement(codeEl);
+        }
+      }
+    }
+    return;
+  }
+
+  var copyBtn = e.target.closest('.code-mapping-card .copy-btn');
+  if (copyBtn) {
+    var codePane = copyBtn.closest('.pom-tab-pane');
+    if (!codePane) return;
+    var codeText = codePane.querySelector('pre code').textContent;
+    navigator.clipboard.writeText(codeText).then(function() {
+      copyBtn.textContent = 'Đã chép!';
+      setTimeout(function() { copyBtn.textContent = 'Sao chép'; }, 1500);
+    });
+  }
+});
+
