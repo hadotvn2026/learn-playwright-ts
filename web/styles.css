@@ -369,6 +369,10 @@ footer { border-top: 2px solid var(--ink); padding: 24px 32px; color: var(--mute
   .roadmap-card { padding: 10px 14px; }
   .roadmap-route { width: 100%; margin-left: 0; }
 
+  .site-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+  .site-header nav { gap: 12px; font-size: 14px; width: 100%; justify-content: space-between; overflow-x: auto; padding-top: 4px; }
+  .site-header nav a { font-size: 13px; white-space: nowrap; }
+
 }
 
 
@@ -539,6 +543,192 @@ footer { border-top: 2px solid var(--ink); padding: 24px 32px; color: var(--mute
 }
 @media (max-width: 800px) {
   .pom-benefits {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   ABOUT ME SECTION STYLES (Filip Hric inspired)
+   ========================================================= */
+.about-section {
+  scroll-margin-top: 80px;
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 2px dashed var(--line);
+}
+.about-hero {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.about-badge {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+.about-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(32px, 4.5vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+.about-tagline {
+  font-size: clamp(17px, 2.2vw, 22px);
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--accent);
+  margin: 0 0 20px;
+}
+.about-bio {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+.about-bio strong {
+  color: var(--ink);
+}
+.about-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.highlight-item {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+}
+.hl-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.2;
+}
+.hl-label {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+  margin-top: 4px;
+}
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.about-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+.about-btn.primary {
+  background: var(--ink);
+  color: #fff;
+  border: 1.5px solid var(--ink);
+}
+.about-btn.primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.about-btn.secondary {
+  background: #fff;
+  color: var(--ink);
+  border: 1.5px solid var(--line);
+}
+.about-btn.secondary:hover {
+  border-color: var(--ink);
+  background: var(--accent-soft);
+}
+.about-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about-avatar-card {
+  position: relative;
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 8px 8px 0 rgba(26, 22, 17, 0.9);
+  max-width: 340px;
+  width: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.about-avatar-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0 rgba(26, 22, 17, 0.95);
+}
+.avatar-frame {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1e3a5f;
+  border: 1.5px solid var(--line);
+}
+.about-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.avatar-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 2px rgba(21, 128, 61, 0.2);
+}
+
+@media (max-width: 860px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .about-visual {
+    order: -1;
+  }
+  .about-avatar-card {
+    max-width: 260px;
+  }
+  .about-highlights {
     grid-template-columns: 1fr;
   }
 }
