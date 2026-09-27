@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PW Guide — Từ ứng dụng tới test steps tới code Playwright</title>
+<meta name="description" content="59 test case Playwright trên the-internet.herokuapp.com: từ hiểu ứng dụng, viết bước kiểm thử, đến code Playwright hoàn chỉnh." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="#">
+    <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
+      <circle cx="16" cy="16" r="10.5" fill="none" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="16" cy="16" r="2.6" fill="#c2410c"/>
+      <path d="M16 2.5 L18.2 7.5 L16 6 L13.8 7.5 Z" fill="#1a1611"/>
+      <path d="M29.5 16 L24.5 18.2 L26 16 L24.5 13.8 Z" fill="#1a1611"/>
+      <path d="M16 29.5 L13.8 24.5 L16 26 L18.2 24.5 Z" fill="#1a1611"/>
+      <path d="M2.5 16 L7.5 13.8 L6 16 L7.5 18.2 Z" fill="#1a1611"/>
+    </svg>
+    PW<span>·</span>Guide
+  </a>
+  <nav>
+    <a href="#cases">Test case</a>
+    <a href="#path">Lộ trình học</a>
+  </nav>
+  <span class="header-tag">Playwright · the-internet</span>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow">Luyện Playwright · the-internet.herokuapp.com</p>
+    <h1>Từ ứng dụng tới bước kiểm thử tới code.</h1>
+    <p class="lede">Hiểu trang web làm gì, viết các bước kiểm thử như kiểm thử thủ công, rồi dịch thành code Playwright hoàn chỉnh. Mỗi test case đều đi đúng 3 bước này.</p>
+    <div class="stats">
+      <div class="stat"><strong id="stat-cases">59</strong><span>test case</span></div>
+      <div class="stat"><strong>44</strong><span>trang luyện tập</span></div>
+      <div class="stat"><strong>9</strong><span>nhóm kỹ thuật</span></div>
+      <div class="stat"><strong>3</strong><span>bước mỗi case</span></div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="how-card"><span class="how-n">1</span><h3>Ứng dụng</h3><p>Trang web làm gì? Phần tử nào quan trọng? Hành vi nào cần kiểm chứng?</p></div>
+    <div class="how-card"><span class="how-n">2</span><h3>Bước kiểm thử</h3><p>Viết các bước như kiểm thử thủ công: mở trình duyệt, điều hướng, thao tác, kiểm tra.</p></div>
+    <div class="how-card"><span class="how-n">3</span><h3>Code Playwright</h3><p>Script hoàn chỉnh copy từ file .spec.ts trong repo, kèm giải thích vì sao viết như vậy.</p></div>
+  </section>
+
+  <section id="cases" class="cases">
+    <div class="cases-head">
+      <h2>Tất cả test case</h2>
+      <input id="search" type="search" placeholder="Tìm theo tên, route, file..." autocomplete="off" />
+    </div>
+    <div id="filters" class="filters"></div>
+    <p id="count" class="count"></p>
+    <div id="list" class="list"></div>
+  </section>
+
+  <section id="path" class="path">
+    <h2>Lộ trình học</h2>
+    <p class="path-intro">Đi qua 26 điểm dừng từ dễ tới khó. Bấm vào chú mèo ở mỗi điểm dừng để nhảy tới test case tương ứng.</p>
+    <div id="roadmap" class="roadmap"></div>
+  </section>
+</main>
+
+<footer>
+  <p class="foot-brand">
+    <svg viewBox="0 0 32 32" width="18" height="18" aria-hidden="true">
+      <circle cx="16" cy="16" r="10.5" fill="none" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="16" cy="16" r="2.6" fill="#c2410c"/>
+    </svg>
+    PW Guide — 59 test case Playwright từ repo PW2609 · Địa chỉ gốc https://the-internet.herokuapp.com
+  </p>
+</footer>
+
+<script>const TESTS = [];</script>
+<script src="data-a.js"></script>
+<script src="data-b.js"></script>
+<script src="data-c.js"></script>
+<script src="data-d.js"></script>
+<script src="data-e.js"></script>
+<script src="data-f.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "pw2609",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.20.2",
+    "fs": "^0.0.1-security"
+  },
+  "dependencies": {
+    "@typesafe-ai/sdk": "^0.6.0",
+    "dotenv": "^18.0.1"
+  }
+}
