@@ -1,3 +1,34 @@
+window.openLightbox = function(src, title) {
+  let overlay = document.getElementById('lightbox-modal');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'lightbox-modal';
+    overlay.className = 'lightbox-overlay';
+    overlay.innerHTML = '<div class="lightbox-content">' +
+      '<div class="lightbox-head">' +
+      '  <span class="lightbox-title"></span>' +
+      '  <button type="button" class="lightbox-close" aria-label="Đóng">&times;</button>' +
+      '</div>' +
+      '<img class="lightbox-img" src="" alt="Zoom preview" />' +
+      '</div>';
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay || e.target.classList.contains('lightbox-close')) {
+        overlay.classList.remove('active');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+      }
+    });
+  }
+  overlay.querySelector('.lightbox-title').textContent = title;
+  overlay.querySelector('.lightbox-img').src = src;
+  overlay.classList.add('active');
+};
+
+
 const list = document.getElementById('list');
 const search = document.getElementById('search');
 const filtersEl = document.getElementById('filters');
@@ -42,7 +73,18 @@ function render() {
     '<details class="case" id="case-' + esc(t.id) + '"><summary><span class="case-id">' + esc(t.id) + '</span>' +
     '<span class="case-title">' + esc(t.title) + '</span>' +
     '<span class="case-route">' + esc(t.route) + ' · ' + esc(t.group) + '</span></summary>' +
-    '<div class="case-body"><div class="step-3">' +
+    '<div class="case-body">' +
+    '<div class="case-screenshot-wrap">' +
+    '  <div class="case-screenshot-header">' +
+    '    <span class="shot-title">📸 Giao diện màn hình test flow (' + esc(t.id) + ')</span>' +
+    '    <span class="shot-route">' + esc(t.route) + '</span>' +
+    '  </div>' +
+    '  <div class="case-screenshot-box">' +
+    '    <img src="screenshots/' + esc(t.id) + '.jpg" alt="Screenshot ' + esc(t.id) + ' - ' + esc(t.title) + '" loading="lazy" class="case-screenshot-img" onclick="openLightbox(this.src, \'' + esc(t.id) + ' - ' + esc(t.title) + '\')" />' +
+    '    <span class="zoom-tip">🔍 Bấm ảnh để xem cỡ lớn</span>' +
+    '  </div>' +
+    '</div>' +
+    '<div class="step-3">' +
     '<div class="step"><h4><b>1</b>Ứng dụng</h4><p>' + esc(t.app) + '</p></div>' +
     '<div class="step"><h4><b>2</b>Các bước kiểm thử</h4><ol>' + t.steps.map(s => '<li>' + esc(s) + '</li>').join('') + '</ol></div>' +
     '<div class="step"><h4><b>3</b>Vì sao viết code như vậy</h4><p>' + esc(t.why) + '</p><div class="illus">' + ILLUS[t.group] + '</div></div>' +

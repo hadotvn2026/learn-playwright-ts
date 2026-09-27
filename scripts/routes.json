@@ -1,0 +1,297 @@
+{
+  "TC01.1": {
+    "route": "/login",
+    "spec": "login.spec.ts",
+    "title": "Đăng nhập thành công với tài khoản hợp lệ"
+  },
+  "TC01.2": {
+    "route": "/login",
+    "spec": "login.spec.ts",
+    "title": "Đăng nhập với mật khẩu sai"
+  },
+  "TC01.3": {
+    "route": "/login",
+    "spec": "login.spec.ts",
+    "title": "Đăng nhập với tên tài khoản sai"
+  },
+  "TC02.1": {
+    "route": "/checkboxes",
+    "spec": "checkboxes.spec.ts",
+    "title": "Tích chọn checkbox"
+  },
+  "TC02.2": {
+    "route": "/checkboxes",
+    "spec": "checkboxes.spec.ts",
+    "title": "Bỏ chọn checkbox"
+  },
+  "TC03.1": {
+    "route": "/dropdown",
+    "spec": "dropdown.spec.ts",
+    "title": "Chọn một lựa chọn trong dropdown"
+  },
+  "TC03.2": {
+    "route": "trang demo",
+    "spec": "dropdown.spec.ts",
+    "title": "Chọn nhiều lựa chọn"
+  },
+  "TC04": {
+    "route": "/status_codes",
+    "spec": "links.spec.ts",
+    "title": "Bấm các liên kết mã trạng thái"
+  },
+  "TC05.1": {
+    "route": "/tables",
+    "spec": "table.spec.ts",
+    "title": "Tìm người có khoản nợ lớn nhất"
+  },
+  "TC05.2": {
+    "route": "/tables",
+    "spec": "table.spec.ts",
+    "title": "Tìm người có khoản nợ nhỏ nhất"
+  },
+  "TC06.1": {
+    "route": "/nested_frames",
+    "spec": "frame.spec.ts",
+    "title": "Nội dung các frame lồng nhau"
+  },
+  "TC06.2": {
+    "route": "/iframe",
+    "spec": "iframe.spec.ts",
+    "title": "Trình soạn thảo trong iframe"
+  },
+  "TC06.3": {
+    "route": "/tinymce",
+    "spec": "wysiwygEditor.spec.ts",
+    "title": "Trình soạn thảo WYSIWYG"
+  },
+  "TC07.1": {
+    "route": "/javascript_alerts",
+    "spec": "jsAlert.spec.ts",
+    "title": "Hộp thoại cảnh báo JS"
+  },
+  "TC07.2": {
+    "route": "/javascript_alerts",
+    "spec": "jsAlert.spec.ts",
+    "title": "Hộp xác nhận JS - Cancel"
+  },
+  "TC07.3": {
+    "route": "/javascript_alerts",
+    "spec": "jsAlert.spec.ts",
+    "title": "Hộp xác nhận JS - OK"
+  },
+  "TC07.4": {
+    "route": "/javascript_alerts",
+    "spec": "jsAlert.spec.ts",
+    "title": "Hộp nhập liệu JS"
+  },
+  "TC08": {
+    "route": "/hovers",
+    "spec": "hover.spec.ts",
+    "title": "Di chuột hiện tên người dùng"
+  },
+  "TC09": {
+    "route": "/context_menu",
+    "spec": "contextMenu.spec.ts",
+    "title": "Bấm chuột phải mở menu ngữ cảnh"
+  },
+  "TC10": {
+    "route": "/drag_and_drop",
+    "spec": "dragDrop.spec.ts",
+    "title": "Kéo và thả cột"
+  },
+  "TC11": {
+    "route": "/horizontal_slider",
+    "spec": "horizontalSlider.spec.ts",
+    "title": "Kéo thanh trượt tới 3.5"
+  },
+  "TC12": {
+    "route": "/key_presses",
+    "spec": "keyPresses.spec.ts",
+    "title": "Nhấn phím và xem kết quả"
+  },
+  "TC13": {
+    "route": "/inputs",
+    "spec": "inputs.spec.ts",
+    "title": "Nhập số vào ô number"
+  },
+  "TC14.1": {
+    "route": "/download",
+    "spec": "download.spec.ts",
+    "title": "Tải một tệp về"
+  },
+  "TC14.2": {
+    "route": "/download",
+    "spec": "download.spec.ts",
+    "title": "Tải nhiều tệp"
+  },
+  "TC14.3": {
+    "route": "/download_secure",
+    "spec": "secureDownload.spec.ts",
+    "title": "Tải tệp cần đăng nhập"
+  },
+  "TC14.4": {
+    "route": "/upload",
+    "spec": "uploadFile.spec.ts",
+    "title": "Tải tệp lên"
+  },
+  "TC15.1": {
+    "route": "/basic_auth",
+    "spec": "basicAuth.spec.ts",
+    "title": "Xác thực cơ bản Basic Auth"
+  },
+  "TC15.2": {
+    "route": "/digest_auth",
+    "spec": "digestAuth.spec.ts",
+    "title": "Xác thực Digest Auth"
+  },
+  "TC16": {
+    "route": "/broken_images",
+    "spec": "brokenImage.spec.ts",
+    "title": "Kiểm tra ảnh hỏng"
+  },
+  "TC17.1": {
+    "route": "/entry_ad",
+    "spec": "adPopup.spec.ts",
+    "title": "Cửa sổ quảng cáo tự hiện"
+  },
+  "TC17.2": {
+    "route": "/exit_intent",
+    "spec": "exitIntent.spec.ts",
+    "title": "Cửa sổ khi di chuột ra ngoài"
+  },
+  "TC18.1": {
+    "route": "/infinite_scroll",
+    "spec": "infinityScroll.spec.ts",
+    "title": "Cuộn vô hạn tải thêm"
+  },
+  "TC18.2": {
+    "route": "/floating_menu",
+    "spec": "floatingMenu.spec.ts",
+    "title": "Menu nổi khi cuộn trang"
+  },
+  "TC19": {
+    "route": "/windows",
+    "spec": "multipleWindows.spec.ts",
+    "title": "Mở cửa sổ mới"
+  },
+  "TC20.1": {
+    "route": "/dynamic_controls",
+    "spec": "dynamicControls.spec.ts",
+    "title": "Xóa rồi thêm lại checkbox"
+  },
+  "TC20.2": {
+    "route": "/dynamic_controls",
+    "spec": "dynamicControls.spec.ts",
+    "title": "Bật/tắt ô nhập liệu"
+  },
+  "TC21.1": {
+    "route": "/dynamic_loading/1",
+    "spec": "dynamicLoading.spec.ts",
+    "title": "Tải nội dung ẩn - ví dụ 1"
+  },
+  "TC21.2": {
+    "route": "/dynamic_loading/2",
+    "spec": "dynamicLoading.spec.ts",
+    "title": "Tải nội dung vẽ sau - ví dụ 2"
+  },
+  "TC22.1": {
+    "route": "/dynamic_content",
+    "spec": "dynamicContent.spec.ts",
+    "title": "Nội dung đổi sau tải lại"
+  },
+  "TC22.2": {
+    "route": "/dynamic_content?static",
+    "spec": "dynamicContent.spec.ts",
+    "title": "Nội dung tĩnh giữ ảnh đại diện"
+  },
+  "TC22.3": {
+    "route": "/disappearing_elements",
+    "spec": "disappearingElements.spec.ts",
+    "title": "Menu lúc ẩn lúc hiện"
+  },
+  "TC23.1": {
+    "route": "/abtest",
+    "spec": "abTest.spec.ts",
+    "title": "Nội dung kiểm thử A/B"
+  },
+  "TC23.2": {
+    "route": "/challenging_dom",
+    "spec": "challengingDom.spec.ts",
+    "title": "Bảng DOM khó"
+  },
+  "TC23.3": {
+    "route": "/large",
+    "spec": "largeDom.spec.ts",
+    "title": "Bảng lớn 50 hàng"
+  },
+  "TC23.4": {
+    "route": "/large",
+    "spec": "largeDom.spec.ts",
+    "title": "Các khối div lồng nhau"
+  },
+  "TC24.1": {
+    "route": "/add_remove_elements/",
+    "spec": "addRemoveElements.spec.ts",
+    "title": "Thêm và xóa phần tử"
+  },
+  "TC24.2": {
+    "route": "/redirector",
+    "spec": "redirector.spec.ts",
+    "title": "Liên kết chuyển hướng"
+  },
+  "TC24.3": {
+    "route": "/notification_message",
+    "spec": "notificationMessage.spec.ts",
+    "title": "Thông báo sau thao tác"
+  },
+  "TC24.4a": {
+    "route": "/shifting_content/menu",
+    "spec": "shiftingContent.spec.ts",
+    "title": "Nội dung dịch chuyển - menu"
+  },
+  "TC24.4b": {
+    "route": "/shifting_content/image",
+    "spec": "shiftingContent.spec.ts",
+    "title": "Nội dung dịch chuyển - ảnh"
+  },
+  "TC24.4c": {
+    "route": "/shifting_content/list",
+    "spec": "shiftingContent.spec.ts",
+    "title": "Nội dung dịch chuyển - danh sách"
+  },
+  "TC25.1": {
+    "route": "/forgot_password",
+    "spec": "forgotPassword.spec.ts",
+    "title": "Quên mật khẩu báo lỗi máy chủ"
+  },
+  "TC25.2": {
+    "route": "/typos",
+    "spec": "typos.spec.ts",
+    "title": "Lỗi chính tả ngẫu nhiên"
+  },
+  "TC25.3": {
+    "route": "/javascript_error",
+    "spec": "javascriptError.spec.ts",
+    "title": "Lỗi JavaScript khi tải trang"
+  },
+  "TC25.4": {
+    "route": "/slow",
+    "spec": "slowResources.spec.ts",
+    "title": "Tài nguyên tải chậm"
+  },
+  "TC26.1": {
+    "route": "/jqueryui/menu",
+    "spec": "jqueryMenu.spec.ts",
+    "title": "Menu jQuery nhiều cấp"
+  },
+  "TC26.2": {
+    "route": "/shadowdom",
+    "spec": "shadowDom.spec.ts",
+    "title": "Chữ trong Shadow DOM"
+  },
+  "TC26.3": {
+    "route": "/geolocation",
+    "spec": "geolocation.spec.ts",
+    "title": "Vị trí địa lý"
+  }
+}
