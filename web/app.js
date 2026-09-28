@@ -200,17 +200,32 @@ ROADMAP_DATA.push(
   }
 );
 
+/* Giai đoạn 7: AI — 6 chặng Agentic, link thẳng tới các anchor ag-1 … ag-6 */
+ROADMAP_DATA.push({
+  phase: 'Giai đoạn 7: AI trong Playwright — 6 chặng Agentic (AI-1 – AI-6)',
+  isAI: true,
+  stops: [
+    { code: 'AI-1', id: 'ag-1', title: 'Copy prompt — biến test fail thành ngữ cảnh AI', desc: 'Nút Copy prompt trên HTML Report / Trace Viewer gửi nguyên bối cảnh lỗi cho AI.', route: '#ag-1' },
+    { code: 'AI-2', id: 'ag-2', title: 'codegen + Agent Skill — record thô, agent tinh chỉnh', desc: 'Record bằng codegen rồi để agent dựa trên skill sửa thành test chuẩn.', route: '#ag-2' },
+    { code: 'AI-3', id: 'ag-3', title: 'Playwright Test Agents — planner · generator · healer', desc: 'Ba agent chính thức, khởi tạo bằng init-agents, tự lên kế hoạch và tự chữa test.', route: '#ag-3' },
+    { code: 'AI-4', id: 'ag-4', title: 'Regression Selector — đọc PR diff chọn đúng test', desc: 'Chỉ chạy các test liên quan tới phần code thay đổi, tiết kiệm CI.', route: '#ag-4' },
+    { code: 'AI-5', id: 'ag-5', title: 'AI Review Agent — soi test PR như senior reviewer', desc: 'Rà chất lượng test, cảnh báo flaky và vi phạm trước khi merge.', route: '#ag-5' },
+    { code: 'AI-6', id: 'ag-6', title: 'Mở rộng — CLI/MCP, auto-triage và agent khác', desc: 'Những mảnh ghép còn lại để pipeline agentic chạy trơn trong dự án thật.', route: '#ag-6' }
+  ]
+});
+
 function renderRoadmap() {
   var roadmapEl = document.getElementById('roadmap');
   if (!roadmapEl) return;
   var html = '';
   ROADMAP_DATA.forEach(function(phaseBlock) {
-    html += '<div class="roadmap-phase">';
+    html += '<div class="roadmap-phase' + (phaseBlock.isAI ? ' is-ai' : '') + '">';
     html += '<div class="roadmap-phase-tag">' + esc(phaseBlock.phase) + '</div>';
     html += '</div>';
     phaseBlock.stops.forEach(function(stop) {
-      html += '<a class="roadmap-stop" href="#case-' + esc(stop.id) + '" data-target="' + esc(stop.id) + '">';
-      html += '  <div class="roadmap-cat-btn" title="Đi tới test case ' + esc(stop.id) + '">' + CAT_ICON + '</div>';
+      var isAnchor = !!document.getElementById(stop.id);
+      html += '<a class="roadmap-stop" href="' + (isAnchor ? '#' + esc(stop.id) : '#case-' + esc(stop.id)) + '" data-target="' + esc(stop.id) + '">';
+      html += '  <div class="roadmap-cat-btn" title="Đi tới ' + (isAnchor ? 'chặng ' : 'test case ') + esc(stop.id) + '">' + CAT_ICON + '</div>';
       html += '  <div class="roadmap-card">';
       html += '    <div class="roadmap-card-head">';
       html += '      <span class="roadmap-step-num">' + esc(stop.code) + '</span>';
@@ -227,6 +242,15 @@ function renderRoadmap() {
 }
 
 function navigateToCase(tcId) {
+  // Điểm dừng link thẳng tới anchor có sẵn (6 chặng Agentic: ag-1 … ag-6)
+  var anchorEl = document.getElementById(tcId);
+  if (anchorEl) {
+    anchorEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    anchorEl.classList.add('highlight-target');
+    setTimeout(function() { anchorEl.classList.remove('highlight-target'); }, 2200);
+    return;
+  }
+
   var targetEl = document.getElementById('case-' + tcId);
   if (!targetEl) {
     active = 'Tất cả';
@@ -248,14 +272,14 @@ function navigateToCase(tcId) {
 }
 
 document.addEventListener('click', function(e) {
-  var stopEl = e.target.closest('.roadmap-stop');
+  var stopEl = e.target.closest('.roadmap-stop, .ag-roadmap-stop');
   if (!stopEl) return;
   e.preventDefault();
   var tcId = stopEl.dataset.target;
   if (tcId) {
     navigateToCase(tcId);
     if (history.pushState) {
-      history.pushState(null, null, '#case-' + tcId);
+      history.pushState(null, null, document.getElementById(tcId) ? '#' + tcId : '#case-' + tcId);
     }
   }
 });
@@ -291,13 +315,47 @@ document.addEventListener('click', function(e) {
 
   var copyBtn = e.target.closest('.code-mapping-card .copy-btn');
   if (copyBtn) {
-    var codePane = copyBtn.closest('.pom-tab-pane');
-    if (!codePane) return;
-    var codeText = codePane.querySelector('pre code').textContent;
-    navigator.clipboard.writeText(codeText).then(function() {
+    var codePane = copyBtn.closest('.pom-tab-pane') || copyBtn.closest('.code-mapping-card');
+    // Mỗi pane có thể chứa nhiều khối code: chép đúng khối ngay sau code-head của nút này.
+    var head = copyBtn.closest('.code-head');
+    var pre = head ? head.nextElementSibling : null;
+    if (!pre || pre.tagName !== 'PRE') { pre = codePane ? codePane.querySelector('pre') : null; }
+    if (!pre) return;
+    var codeEl = pre.querySelector('code');
+    if (!codeEl) return;
+    navigator.clipboard.writeText(codeEl.textContent).then(function() {
       copyBtn.textContent = 'Đã chép!';
       setTimeout(function() { copyBtn.textContent = 'Sao chép'; }, 1500);
     });
   }
 });
+
+/* Highlight các pane đang hiển thị ngay khi tải trang (tab active mặc định) */
+document.addEventListener('DOMContentLoaded', function() {
+  if (!window.hljs) return;
+  document.querySelectorAll('.pom-tab-pane.active code, .code-mapping-card > pre code').forEach(function(codeEl) {
+    if (!codeEl.dataset.highlighted) { try { window.hljs.highlightElement(codeEl); } catch (e) {} }
+  });
+});
+
+/* Nút về đầu trang: chỉ hiện khi đã cuộn xuống (trang rất dài) */
+(function () {
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'to-top';
+  btn.setAttribute('aria-label', 'Về đầu trang');
+  btn.title = 'Về đầu trang';
+  btn.textContent = '↑';
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.body.appendChild(btn);
+
+  var sync = function () {
+    btn.classList.toggle('show', (window.scrollY || window.pageYOffset || 0) > 700);
+  };
+  window.addEventListener('scroll', sync, { passive: true });
+  sync();
+})();
+
 

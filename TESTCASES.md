@@ -596,3 +596,308 @@ const due = parseFloat(((await row.locator('td:nth-child(4)').textContent()) ?? 
 - Table parse ve type Person, beforeEach + test.step nen report ro tung buoc.
 
 
+
+# PHAN 3 - Playwright's Agentics: workflow AI trong vong doi test
+
+> Nguon tham chieu: Playwright docs (Test Agents, Copy prompt 1.51, Coding agents / playwright-cli, MCP)
+> + skill best-practices cua cong dong (currents-dev).
+> Nguyen tac xuyen suot: agent giai 3 viec - **sinh nhanh, chon dung, sua kip**.
+> Con nguoi giu quyen quyet dinh "the nao la dung" (expected value nghiep vu, merge PR).
+
+## Agentics 1 - Copy prompt (Playwright >= 1.51)
+
+**Xuat hien o:** khoi error trong HTML report, trace viewer, va UI mode.
+
+**Prompt copy ra gom 4 phan co dinh:**
+
+1. Instructions - chi dan cho LLM (co the la prompt mac dinh cua Playwright).
+2. Test info - ten test, file:line, project, retry, duration.
+3. Error - message + expected/received + call log (locator dang cho).
+4. Source - code that cua spec tai thoi diem fail.
+
+**Luu y:** prompt chi nam trong clipboard, Playwright khong gui code len server nao.
+
+**Vi du quy trinh:**
+
+```bash
+npx playwright test --ui                 # mo UI mode, thay nut Copy prompt
+npx playwright test tests/table.spec.ts --grep "max due" --trace on
+npx playwright show-report               # copy prompt tu report da luu
+npx playwright show-trace test-results/.../trace.zip
+```
+
+**Them ngu canh cho report (nen bat):**
+
+```ts
+// playwright.config.ts
+export default defineConfig({
+  captureGitInfo: { commit: true, diff: true },
+});
+```
+
+**Tai sao viet the:** log locator long nhau rat kho doc bang mat; prompt da duoc sap xep san
+nen AI chi ra dung dong sai (thuong la du lieu test doi) thay vi doan mo.
+
+## Agentics 2 - codegen + Agent Skill (record tho -> test chuan)
+
+**Van de:** `npx playwright codegen` cho code nhanh nhung locator dai, khong assertion,
+khong POM, chi co 1 nhanh (thieu case am).
+
+**Cach lam:** cai skill de agent biet dung chuan cua Playwright truoc khi refactor.
+
+```bash
+# Skill chinh thuc cua Playwright (kem playwright-cli)
+npm install -g @playwright/cli@latest
+playwright-cli install --skills          # -> .claude/skills/playwright-cli
+playwright-cli install --skills=agents   # -> .agents/skills
+playwright-cli install --skills -g       # cai cho moi project
+
+# Skill cong dong (best practices theo chu de)
+npx skills add https://github.com/currents-dev/playwright-best-practices-skill
+
+# Lay nguyen lieu tho
+npx playwright codegen https://the-internet.herokuapp.com/login --target=typescript
+```
+
+**Prompt convert (mau da dung trong repo nay):**
+
+```text
+Doc tests/_recorded.spec.ts (codegen tho) va refactor thanh test chuan best practices:
+1. Tai su dung LoginPage + fixture trong pages/login.page.ts va pages/base.ts, khong hardcode URL.
+2. Locator: getByRole/getByLabel, bo .click() thua truoc fill, bo locator theo vi tri.
+3. Ten test theo hanh vi + ket qua mong doi; them test.step() cho tung giai doan.
+4. Bo sung nhanh am: sai password, sai username, bo trong field.
+5. Moi assertion dung expect auto-retry; khong dung waitForTimeout.
+6. Tra ve diff tung buoc va lenh verify cuoi cung.
+```
+
+**Checklist review ket qua convert (truoc khi merge):**
+
+- Locator theo role/label/testId, khong XPath theo vi tri.
+- Khong con `waitForTimeout`; cho doi bang `expect` auto-retry.
+- Moi test co assertion kiem chung ket qua, khong chi thao tac.
+- Test doc lap, chay song song duoc.
+- Khong hardcode URL/credential.
+- Da chay `--repeat-each=3` va xanh on dinh.
+- Da gan tag `@smoke` / `@regression` de phuc vu loc regression.
+
+
+## Agentics 3 - Playwright Test Agents chinh thuc (planner / generator / healer)
+
+Playwright ship san 3 agent trong framework. Dung doc lap, tuan tu, hoac moc thanh vong lap agentic.
+
+| Agent | Vai tro | Input | Output |
+|---|---|---|---|
+| planner | kham pha app va lap ke hoach | yeu cau tu nhien, seed test, PRD | `specs/*.md` (test plan Markdown) |
+| generator | bien plan thanh code | plan trong `specs/` | spec trong `tests/` |
+| healer | chay suite va tu sua | ten test fail | test pass, hoac skip kem ly do |
+
+**Khoi tao (chon 1 loop theo cong cu dang dung):**
+
+```bash
+npx playwright init-agents --loop=vscode     # Copilot trong VS Code (VS Code >= 1.105)
+npx playwright init-agents --loop=claude     # Claude Code (subagents)
+npx playwright init-agents --loop=codex      # Codex
+npx playwright init-agents --loop=opencode   # OpenCode
+```
+
+**Cau truc file sau khi khoi tao:**
+
+```text
+repo/
+  .github/            # dinh nghia agent (instructions + MCP tools do Playwright cung cap)
+  specs/              # test plan Markdown do planner sinh
+  tests/seed.spec.ts  # seed test: dung global setup + fixture + hook
+  tests/...           # test do generator sinh
+```
+
+**Seed test la chia khoa:** planner chay `tests/seed.spec.ts` de co dung trang thai moi truong
+nhu test that, va dung file do lam mau phong cach cho moi test sinh ra sau nay.
+
+**Planner - prompt mau:**
+
+```text
+Tao test plan cho luong dang nhap cua https://the-internet.herokuapp.com/login.
+- Dung tests/seed.spec.ts de khoi tao moi truong (fixture pages/base.ts, baseURL da cau hinh).
+- Kien truc POM: pages/login.page.ts da co login(), flashMessage.
+- Khong trung lap TC01 trong TESTCASES.md, hay mo rong them.
+1. Bao phu: happy path, sai password, sai username, bo trong field, logout.
+2. Moi scenario ghi ro: buoc, du lieu, ket qua mong doi quan sat duoc.
+3. Neu ro assertion web-first se dung.
+4. Luu thanh specs/login-authentication.md, danh so scenario de truy vet ve TC id.
+```
+
+**Generator:** doc plan trong `specs/`, sinh test vao `tests/` (uu tien anh xa 1-1 plan -> spec).
+Test sinh ra co comment `// spec:` va `// seed:` o dau file de truy vet hai chieu plan <-> code.
+
+**Healer - nguyen tac bat buoc trong prompt cua repo nay:**
+
+```text
+1. Replay test de xac nhan loi tai hien duoc (khong flaky).
+2. Kiem tra DOM hien tai; xac dinh bang/cot/du lieu that.
+3. Chi sua khi nguyen nhan la DO TEST (locator sai, thu tu cot doi, du lieu mau lech).
+   - Du lieu app doi that: cap nhat expected value va ghi ro nguon de QA xac nhan.
+   - UI doi cau truc: cap nhat theo huong POM, khong nhet locator moi vao spec.
+4. Neu bang/cot khong con ton tai hoac hanh vi sai nghiep vu
+   -> KHONG sua test, danh dau bug va skip kem ly do.
+5. Chay lai toi da 3 lan voi --repeat-each=3, chi bao xong khi xanh on dinh.
+```
+
+**Healer duoc phep sua:** locator doi do DOM thay doi, thu tu cot doi, thieu buoc cho,
+du lieu mau tren moi truong demo doi.
+
+**Healer khong duoc phep:** ha assertion cho vua ket qua sai, doi expected value nghiep vu,
+boc try/catch de test "xanh" gia, tang timeout vo toi va.
+
+**Bao tri:** agent definitions phai regenerate moi khi nang version Playwright
+(`npx playwright init-agents --loop=...`) va review diff truoc khi commit.
+
+
+
+## Agentics 4 - Regression Selector theo PR diff
+
+**Muc tieu:** PR chi sua 1 validate o form login thi khong can chay ca 60 spec.
+
+**Hai tang quyet dinh (heuristic truoc, LLM sau):**
+
+1. Rule tat dinh: file POM doi -> moi spec import no bi anh huong; spec bi sua truc tiep -> chay.
+   Tag `@smoke` luon chay tren moi PR.
+2. LLM chi cham cho cac spec con lai, voi cau hoi 3 lua chon:
+   `AFFECTED` / `NOT_AFFECTED` / `UNSURE`.
+
+**Cong thuc an toan (bat buoc):**
+
+- Chi duoc phep **loai bo** test khi AI tra `NOT_AFFECTED` va `confidence >= 0.8`.
+  Moi truong hop mo ho mac dinh **chay**.
+- Neu diff cham file core (`playwright.config.ts`, `pages/base.ts`, `tests/fixtures/**`)
+  hoac qua rong (> 25 file) -> bo qua agent, chay full suite.
+- Neu agent loi / het quota -> fallback ghi full danh sach, tuyet doi khong chay rong.
+- Ghi ly do chon tung spec vao artifact (`regression-selected.txt` + log) de audit.
+
+**Bang do hieu qua can theo doi:**
+
+| Chi so | Dinh nghia | Muc tieu |
+|---|---|---|
+| Selection accuracy | ti le spec duoc chon ma that su fail o full run | cang cao cang tot |
+| Escape rate | bug lot qua bo test da loc | khong tang |
+| Thoi gian CI | so sanh tap con vs full run | giam 50-70% |
+
+**Nguon du lieu cho agent:** `test-map.json` sinh tu chinh `tests/*.spec.ts`
+(quet TC id, route trong `goto()`, import page object, tag `@...`).
+Ban do lech la nguyen nhan so 1 khien agent chon thieu test -> nen regenerate trong CI
+truoc khi goi agent.
+
+## Agentics 5 - AI Review Agent cho PR test
+
+**Luat cho agent giong luat review cua con nguoi**, nhung phai chay theo rubric co dinh
+(nen ket qua moi lan giong nhau).
+
+**Rubric su dung trong repo nay:**
+
+| Severity | Dieu kien |
+|---|---|
+| BLOCKER | hardcode credential/token; dung `waitForTimeout`; khong co assertion kiem chung |
+| WARN | locator theo vi tri/class de doi; test phu thuoc thu tu/state chung; lap lai UI thay vi POM; assertion qua long (`toBeVisible` thay `toContainText`) |
+| INFO | thieu tag `@smoke` / `@regression`; thieu nhanh am hoac boundary |
+
+**Nguyen tac tra loi cua prompt:**
+
+1. Chi neu van de trong phan diff cua PR, khong "cai tao" code cu ngoai pham vi.
+2. Moi van de phai co file, dong, severity, ly do 1 cau, va doan code thay the.
+3. De xuat dung API Playwright (expect auto-retry, getByRole, test.step).
+4. Khong bia dong khong ton tai; thieu du lieu thi ghi "can xac nhan".
+5. Tra ve JSON co schema co dinh: `{ summary, verdict, findings[] }`.
+
+**Gate trong CI:** co BLOCKER -> `REQUEST_CHANGES` (fail check); chi WARN/INFO -> APPROVE
+kem comment. Dat reviewer **sau** buoc chay suite de agent biet test co xanh on dinh khong,
+
+## Agentics 6 - Mo rong: playwright-cli vs MCP, auto-triage, ranh gioi
+
+### 6.1 Chon cong cu cho agent dieu khien browser
+
+| Tieu chi | playwright-cli | Playwright MCP |
+|---|---|---|
+| Phu hop nhat | coding agent tren codebase lon | vong lap agentic chuyen biet, tham do |
+| Cach hoat dong | agent chay lenh shell | LLM goi tool theo schema |
+| Chi phi token | thap (output gon, skill nap theo nhu cau) | cao (tool schema + snapshot trong context) |
+| Che do mac dinh | headless | headed |
+| Cai dat | `npm install -g @playwright/cli@latest` | `npx @playwright/mcp@latest` trong config MCP client |
+
+```bash
+# CLI: sau moi lenh in ra page state + snapshot file de lay element ref
+playwright-cli open https://the-internet.herokuapp.com/login --headed
+playwright-cli type tomsmith
+playwright-cli snapshot
+playwright-cli screenshot
+
+# MCP: bat them capability khi can
+# --caps=network | --caps=storage | --caps=testing | --caps=devtools
+```
+
+### 6.2 Auto-triage & self-healing dang co trong repo
+
+**Luong hien tai:**
+
+1. Test fail -> reporter thu log + DOM snapshot vao `ai-triage-logs/`.
+2. `utils/jevTriage.ts` phan loai: `ASSERTION` / `LOCATOR_ISSUE` / `NETWORK` + confidence.
+3. `reporters/JevAutoTriageReporter.ts` quyet dinh:
+   - `ASSERTION`: **khong** tu sua, goi `utils/slackMock.ts` canh bao QA (nghi bug that / du lieu doi).
+   - `LOCATOR_ISSUE` + `confidence >= 0.85`: ghi system prompt, goi agent non-interactive
+     de sua **locator trong Page Object**, tao PR.
+   - `LOCATOR_ISSUE` + confidence thap, hoac truong hop khac: manual review.
+
+**Vi du prompt ep khuon hanh vi agent (da co trong reporter):**
+
+```text
+You are an expert QA Automation Engineer.
+Task: Fix the Playwright locator issue for the failed test.
+Context: ai-triage-logs/<name>-error.txt, ai-triage-logs/<name>-dom.html
+Rules:
+1. Analyze the DOM to find the correct selector for the failing element.
+2. Locate the corresponding Page Object Model class.
+3. Update the locator.
+4. CRITICAL: maintain encapsulation; do NOT create methods with a chain of single interactions.
+5. Create a new branch, commit the fix, and push.
+```
+
+**Nang cap tiep:** thay CLI tu goi bang healer agent chinh thuc (co guardrail + vong re-run),
+day PR fix qua AI Review Agent truoc khi merge, ghi `rootCause` + confidence vao metadata
+de theo doi flaky theo thoi gian.
+
+### 6.3 Cac agent khac nen bo sung
+
+| Agent | Nhiem vu | Dau hieu can |
+|---|---|---|
+| Flaky Hunter | doc lich su ket qua, tim test fail ngat quang, de xuat sua hoac quarantine | cung test luc xanh luc do tren cung commit |
+| Coverage Gap | doi chieu route/tinh nang voi TESTCASES.md de de xuat case thieu | tinh nang moi ra ma khong ai biet test gi |
+| Bug Reproducer | tu ticket + DOM snapshot sinh test toi thieu tai hien bug | bug quay lai nhieu lan o cung man hinh |
+| Nightly Digest | tom tat ket qua chay dem, nhom theo root cause, gui Slack/Teams | report dai, khong ai doc het |
+
+### 6.4 Ranh gioi: nen / khong nen giao cho agent
+
+**Nen:** sinh test plan va spec; refactor codegen tho; debug khi co du ngu canh;
+sua locator trong Page Object; chon regression theo PR diff; review PR theo rubric;
+phan loai nguyen nhan fail va tom tat report.
+
+**Khong nen:** quyet dinh expected value nghiep vu; tu merge PR do agent tao;
+doi assertion de test xanh khong co nguoi duyet; giam pham vi test khi confidence thap;
+dung du lieu production / credential that; duoc cap quyen ghi rong hon muc can thiet.
+
+### 6.5 Hon hop "hop dong" bat buoc truoc khi bat automation
+
+- Moi thay doi cua agent deu di qua Pull Request, luon co human-in-the-loop o buoc merge.
+- Moi ket luan cua agent kem confidence + ly do, ghi vao artifact de audit.
+- Khi agent loi hoac do du, he thong mac dinh **lam nhieu hon** (chay full test, alert nguoi).
+- Prompt va rubric duoc version hoa trong repo (`.github/prompts/`), sua qua PR nhu code.
+- Chi phi AI duoc theo doi; toi uu bang cach heuristic truoc, LLM sau.
+
+### 6.6 Lo trinh ap dung de nghi (tu nho den lon)
+
+1. Bat **Copy prompt** cho ca team (khong ton chi phi, hieu qua ngay khi debug).
+2. `npx playwright init-agents` + dung planner/generator cho 1-2 tinh nang moi.
+3. Them healer vao workflow hang ngay, noi vao reporter auto-triage da co.
+4. Them Regression Selector khi suite bat dau cham (> 10 phut).
+5. Them AI Review Agent khi team co >= 3 nguoi cung viet test.
+6. Mo rong: Flaky Hunter, Coverage Gap, Nightly Digest.
+
+tu do phan biet "code test viet kem" va "ung dung co bug that".

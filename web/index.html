@@ -26,12 +26,18 @@
     PW<span>·</span>Guide
   </a>
   <nav>
+    <a href="#skills">Kỹ năng</a>
     <a href="#cases">Test case</a>
-    <a href="#path">Lộ trình học</a>
-    <a href="#pom">Page Object Model</a>
-    <a href="#about">About Me</a>
+    <a href="#path">Lộ trình</a>
+    <a href="#companion">Kỹ năng đi kèm</a>
+    <a href="#pom">POM</a>
+    <a href="#agentics">Agentics</a>
+    <a href="#about">About</a>
   </nav>
-  <span class="header-tag">Playwright · the-internet</span>
+  <span class="header-brand" aria-label="TestingVN">
+    <img class="header-brand-icon" src="tvn-logo.png" alt="" width="34" height="24" />
+    Testing<b>VN</b>
+  </span>
 </header>
 
 <main>
@@ -40,48 +46,287 @@
     <h1>Từ ứng dụng tới bước kiểm thử tới code.</h1>
     <p class="lede">Hiểu trang web làm gì, viết các bước kiểm thử như kiểm thử thủ công, rồi dịch thành code Playwright hoàn chỉnh. Mỗi test case đều đi đúng 3 bước này.</p>
     <div class="stats">
+      <div class="stat"><strong>5</strong><span>nhóm kỹ năng</span></div>
       <div class="stat"><strong id="stat-cases">59</strong><span>test case</span></div>
       <div class="stat"><strong>44</strong><span>trang luyện tập</span></div>
       <div class="stat"><strong>9</strong><span>nhóm kỹ thuật</span></div>
-      <div class="stat"><strong>3</strong><span>bước mỗi case</span></div>
+      <div class="stat"><strong>6</strong><span>chặng Agentic</span></div>
+    </div>
+
+    <!-- Bản đồ nội dung: 7 mục lớn của trang -->
+    <nav class="hero-jump" aria-label="Nội dung trang">
+      <a href="#skills"><b>01 · Chuẩn bị</b><span>Kỹ năng cần có</span><em>5 nhóm kỹ năng</em></a>
+      <a href="#cases"><b>02 · Luyện tập</b><span>Tất cả test case</span><em>59 kịch bản</em></a>
+      <a href="#path"><b>03 · Luyện tập</b><span>Lộ trình học</span><em>32 điểm dừng</em></a>
+      <a href="#companion"><b>04 · Luyện tập</b><span>Kỹ năng đi kèm</span><em>7 giai đoạn</em></a>
+      <a href="#pom"><b>05 · Kiến trúc</b><span>POM &amp; Fixture</span><em>2 phần</em></a>
+      <a href="#agentics"><b>06 · Agentic</b><span>Playwright's Agentics</span><em>6 chặng</em></a>
+      <a href="#about"><b>07 · Tác giả</b><span>About me</span><em>Ha Do</em></a>
+    </nav>
+  </section>
+
+  <!-- ========== 01 · KỸ NĂNG CẦN CÓ ========== -->
+  <section id="skills" class="skills-section">
+    <header class="sec-head">
+      <span class="sec-kicker"><b>01</b> Chuẩn bị</span>
+      <h2>Kỹ năng cần có</h2>
+      <p class="sec-lead">
+        5 nhóm kỹ năng nền tảng bạn cần trước khi luyện 59 test case, viết POM
+        hay đi sâu vào Agentic Testing. Chưa vững nhóm nào thì bắt đầu từ nhóm
+        đó — không cần biết hết mới bắt đầu.
+      </p>
+    </header>
+
+    <div class="skills-grid">
+      <article class="skill-card">
+        <div class="skill-head"><span class="skill-icon">🧱</span><span class="skill-lvl">Bắt buộc</span></div>
+        <h3>HTML · CSS · DOM</h3>
+        <p>Đọc được cấu trúc trang và tìm đúng phần tử để thao tác, kiểm tra.</p>
+        <ul class="skill-list">
+          <li>Thẻ, attribute, form, iframe, table</li>
+          <li>Selector, box model, trạng thái disabled / hidden</li>
+          <li>DevTools: inspect phần tử và đọc event</li>
+        </ul>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-head"><span class="skill-icon">⚙️</span><span class="skill-lvl">Bắt buộc</span></div>
+        <h3>TypeScript &amp; Node.js</h3>
+        <p>Ngôn ngữ của mọi file <code>.spec.ts</code> trong repo.</p>
+        <ul class="skill-list">
+          <li><code>async/await</code>, Promise, hàm arrow</li>
+          <li>Module <code>import/export</code> và type cơ bản</li>
+          <li>Chạy script bằng <code>npm</code> / <code>npx playwright</code></li>
+        </ul>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-head"><span class="skill-icon">🎭</span><span class="skill-lvl">Chuyên ngành</span></div>
+        <h3>Playwright cốt lõi</h3>
+        <p>Học một lần, dùng cho cả 59 test case trên trang này.</p>
+        <ul class="skill-list">
+          <li>Locator, web-first assertion, auto-wait</li>
+          <li>Config, parallel, retry, trace, HTML report</li>
+          <li>Fixture và Page Object Model (mục 05)</li>
+        </ul>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-head"><span class="skill-icon">🧪</span><span class="skill-lvl">Phương pháp</span></div>
+        <h3>Tư duy kiểm thử</h3>
+        <p>Biến yêu cầu thành kịch bản kiểm chứng được.</p>
+        <ul class="skill-list">
+          <li>Thiết kế case: happy path, edge case, negative</li>
+          <li>Đọc test case theo 3 bước: ứng dụng → bước kiểm thử → code</li>
+          <li>Debug flaky test bằng trace và log</li>
+        </ul>
+      </article>
+
+      <article class="skill-card skill-card--ai">
+        <div class="skill-head"><span class="skill-icon">🤖</span><span class="skill-lvl">Nâng cao</span></div>
+        <h3>AI &amp; Agentic Testing</h3>
+        <p>Làm việc cùng AI — cánh cửa vào mục 06 của trang này.</p>
+        <ul class="skill-list">
+          <li>Viết prompt đủ ngữ cảnh, hoặc dùng nút <em>Copy prompt</em> từ lỗi</li>
+          <li>codegen + Agent Skill, Test Agents: planner · generator · healer</li>
+          <li>Đọc lại code AI viết trước khi merge</li>
+        </ul>
+      </article>
     </div>
   </section>
 
   <section class="how">
-    <div class="how-card"><span class="how-n">1</span><h3>Ứng dụng</h3><p>Trang web làm gì? Phần tử nào quan trọng? Hành vi nào cần kiểm chứng?</p></div>
-    <div class="how-card"><span class="how-n">2</span><h3>Bước kiểm thử</h3><p>Viết các bước như kiểm thử thủ công: mở trình duyệt, điều hướng, thao tác, kiểm tra.</p></div>
-    <div class="how-card"><span class="how-n">3</span><h3>Code Playwright</h3><p>Script hoàn chỉnh copy từ file .spec.ts trong repo, kèm giải thích vì sao viết như vậy.</p></div>
+    <p class="how-label">Cách đọc mỗi test case · 3 bước cố định</p>
+    <div class="how-grid">
+      <div class="how-card"><span class="how-n">1</span><h3>Ứng dụng</h3><p>Trang web làm gì? Phần tử nào quan trọng? Hành vi nào cần kiểm chứng?</p></div>
+      <div class="how-card"><span class="how-n">2</span><h3>Bước kiểm thử</h3><p>Viết các bước như kiểm thử thủ công: mở trình duyệt, điều hướng, thao tác, kiểm tra.</p></div>
+      <div class="how-card"><span class="how-n">3</span><h3>Code Playwright</h3><p>Script hoàn chỉnh copy từ file .spec.ts trong repo, kèm giải thích vì sao viết như vậy.</p></div>
+    </div>
   </section>
 
   <section id="cases" class="cases">
-    <div class="cases-head">
+    <header class="sec-head">
+      <span class="sec-kicker"><b>02</b> Luyện tập</span>
       <h2>Tất cả test case</h2>
-      <input id="search" type="search" placeholder="Tìm theo tên, route, file..." autocomplete="off" />
+      <p class="sec-lead">
+        59 kịch bản Playwright viết trên the-internet.herokuapp.com, xếp theo 9 nhóm kỹ thuật. Mở từng case để
+        xem 3 bước (ứng dụng → bước kiểm thử → code) và copy nguyên file <code>.spec.ts</code> trong repo.
+      </p>
+    </header>
+
+    <div class="cases-toolbar">
+      <input id="search" type="search" placeholder="Tìm theo tên, route, file..." autocomplete="off" aria-label="Tìm test case" />
+      <div id="filters" class="filters"></div>
     </div>
-    <div id="filters" class="filters"></div>
     <p id="count" class="count"></p>
     <div id="list" class="list"></div>
   </section>
 
   <section id="path" class="path">
-    <h2>Lộ trình học</h2>
-    <p class="path-intro">Đi qua 26 điểm dừng từ dễ tới khó. Bấm vào chú mèo ở mỗi điểm dừng để nhảy tới test case tương ứng.</p>
+    <header class="sec-head">
+      <span class="sec-kicker"><b>03</b> Luyện tập</span>
+      <h2>Lộ trình học</h2>
+      <p class="sec-lead">
+        Đi qua 26 điểm dừng từ dễ tới khó, rồi kết thúc bằng Giai đoạn 7 — 6 chặng
+        AI/Agentic. Bấm vào chú mèo ở mỗi điểm dừng để nhảy tới test case
+        (hoặc chặng Agentic) tương ứng.
+      </p>
+    </header>
     <div id="roadmap" class="roadmap"></div>
   </section>
 
+  <!-- ========== 04 · KỸ NĂNG ĐI KÈM ========== -->
+  <section id="companion" class="companion-section">
+    <header class="sec-head">
+      <span class="sec-kicker"><b>04</b> Luyện tập</span>
+      <h2>Kỹ năng đi kèm</h2>
+      <p class="sec-lead">
+        Mỗi Giai đoạn 1–7 của lộ trình đi kèm một bộ kỹ năng cụ thể — học đúng thứ
+        đúng lúc thay vì dàn trải. Mỗi card nêu kỹ năng / thông số kỹ thuật cần cho
+        giai đoạn đó và quy về nhóm kỹ năng nền tảng ở mục 01.
+      </p>
+    </header>
+
+    <div class="companion-grid">
+      <article class="companion-card">
+        <div class="companion-head">
+          <span class="companion-phase">Giai đoạn 1</span>
+          <h3>Nền tảng &amp; Form cơ bản</h3>
+          <span class="companion-range">TC01 – TC04</span>
+        </div>
+        <ul class="skill-list">
+          <li>Tìm phần tử theo vai trò: <code>getByRole</code>, <code>getByLabel</code>, <code>getByPlaceholder</code></li>
+          <li>Thao tác form: <code>fill</code>, <code>check</code> / <code>uncheck</code>, <code>selectOption</code></li>
+          <li>Kiểm chứng: <code>toBeChecked</code>, <code>toHaveURL</code>; đọc <code>response.status()</code> cho redirect 301 / 404</li>
+        </ul>
+        <nav class="sec-sub companion-groups" aria-label="Nhóm kỹ năng liên quan">
+          <a href="#skills">🧱 HTML · CSS · DOM</a>
+          <a href="#skills">🎭 Playwright cốt lõi</a>
+        </nav>
+      </article>
+
+      <article class="companion-card">
+        <div class="companion-head">
+          <span class="companion-phase">Giai đoạn 2</span>
+          <h3>Bảng biểu, Frame &amp; Hộp thoại</h3>
+          <span class="companion-range">TC05 – TC09</span>
+        </div>
+        <ul class="skill-list">
+          <li>Chuyển ngữ cảnh: <code>page.frameLocator()</code> cho frame lồng và TinyMCE iframe</li>
+          <li>Hộp thoại JS: <code>page.on('dialog')</code> — <code>accept</code>, <code>dismiss</code> hoặc <code>fill</code></li>
+          <li>Chuột &amp; bảng: <code>hover()</code>, <code>click({ button: 'right' })</code>, duyệt <code>tbody tr</code> và parse số</li>
+        </ul>
+        <nav class="sec-sub companion-groups" aria-label="Nhóm kỹ năng liên quan">
+          <a href="#skills">🧱 HTML · CSS · DOM</a>
+          <a href="#skills">🎭 Playwright cốt lõi</a>
+        </nav>
+      </article>
+
+      <article class="companion-card">
+        <div class="companion-head">
+          <span class="companion-phase">Giai đoạn 3</span>
+          <h3>Tương tác chuột, phím &amp; Tệp</h3>
+          <span class="companion-range">TC10 – TC14</span>
+        </div>
+        <ul class="skill-list">
+          <li>Kéo thả &amp; slider: <code>dragTo()</code>, <code>mouse.move()</code>, dò giá trị từng nấc</li>
+          <li>Bàn phím: <code>keyboard.press()</code> với Tab · Enter · Arrow, gõ từng ký tự <code>pressSequentially</code></li>
+          <li>Tệp: <code>waitForEvent('download')</code> và <code>setInputFiles()</code> tải lên / xuống</li>
+        </ul>
+        <nav class="sec-sub companion-groups" aria-label="Nhóm kỹ năng liên quan">
+          <a href="#skills">🎭 Playwright cốt lõi</a>
+          <a href="#skills">⚙️ TypeScript &amp; Node.js</a>
+          <a href="#skills">🧱 HTML · CSS · DOM</a>
+        </nav>
+      </article>
+
+      <article class="companion-card">
+        <div class="companion-head">
+          <span class="companion-phase">Giai đoạn 4</span>
+          <h3>Xác thực &amp; Trải nghiệm giao diện</h3>
+          <span class="companion-range">TC15 – TC19</span>
+        </div>
+        <ul class="skill-list">
+          <li>Đăng nhập HTTP: <code>httpCredentials</code> (Basic / Digest) hoặc embedded URL</li>
+          <li>Ảnh hỏng: <code>evaluate()</code> đọc <code>naturalWidth &gt; 0</code> của thẻ <code>&lt;img&gt;</code></li>
+          <li>Tương tác đặc thù: modal exit-intent, cuộn tải thêm, bắt tab mới bằng <code>context.waitForEvent('page')</code></li>
+        </ul>
+        <nav class="sec-sub companion-groups" aria-label="Nhóm kỹ năng liên quan">
+          <a href="#skills">🎭 Playwright cốt lõi</a>
+          <a href="#skills">🧱 HTML · CSS · DOM</a>
+        </nav>
+      </article>
+
+      <article class="companion-card">
+        <div class="companion-head">
+          <span class="companion-phase">Giai đoạn 5</span>
+          <h3>Chờ bất đồng bộ &amp; Giao diện động</h3>
+          <span class="companion-range">TC20 – TC23</span>
+        </div>
+        <ul class="skill-list">
+          <li>Web-first assertion tự chờ: <code>toBeVisible</code>, <code>toBeEnabled</code>, <code>toHaveAttribute</code> — không <code>sleep()</code> cứng</li>
+          <li>Chờ trạng thái: <code>locator.waitFor()</code>, phần tử xuất hiện / biến mất sau spinner</li>
+          <li>Tư duy negative: nội dung chập chờn, phần tử gỡ bỏ, biến thể A/B</li>
+        </ul>
+        <nav class="sec-sub companion-groups" aria-label="Nhóm kỹ năng liên quan">
+          <a href="#skills">🎭 Playwright cốt lõi</a>
+          <a href="#skills">🧪 Tư duy kiểm thử</a>
+        </nav>
+      </article>
+
+      <article class="companion-card">
+        <div class="companion-head">
+          <span class="companion-phase">Giai đoạn 6</span>
+          <h3>Thử thách nâng cao &amp; Edge cases</h3>
+          <span class="companion-range">TC24 – TC26</span>
+        </div>
+        <ul class="skill-list">
+          <li>Bắt lỗi runtime: <code>page.on('pageerror')</code>, theo dõi console và timeout mạng chậm</li>
+          <li>Xuyên thấu Shadow DOM, giả lập <code>geolocation</code>, rê menu đa cấp</li>
+          <li>Debug flaky: trace, log và kiểm tra redirect chain / layout dịch chuyển</li>
+        </ul>
+        <nav class="sec-sub companion-groups" aria-label="Nhóm kỹ năng liên quan">
+          <a href="#skills">🎭 Playwright cốt lõi</a>
+          <a href="#skills">🧪 Tư duy kiểm thử</a>
+        </nav>
+      </article>
+
+      <article class="companion-card">
+        <div class="companion-head">
+          <span class="companion-phase companion-phase--ai">Giai đoạn 7</span>
+          <h3>AI trong Playwright — 6 chặng Agentic</h3>
+          <span class="companion-range">AI-1 – AI-6</span>
+        </div>
+        <ul class="skill-list">
+          <li>Viết prompt đủ ngữ cảnh (nút <em>Copy prompt</em> từ 1.51+) và dùng codegen + Agent Skill</li>
+          <li>Làm việc cùng Test Agents: planner · generator · healer, Regression Selector, AI Review</li>
+          <li>Mở rộng CLI / MCP, auto-triage; đọc lại code AI viết trước khi merge</li>
+        </ul>
+        <nav class="sec-sub companion-groups" aria-label="Nhóm kỹ năng liên quan">
+          <a href="#skills">🤖 AI &amp; Agentic Testing</a>
+          <a href="#skills">⚙️ TypeScript &amp; Node.js</a>
+        </nav>
+      </article>
+    </div>
+  </section>
+
   <section id="pom" class="pom-section">
-    <div class="pom-head">
-      <span class="pom-badge">Architecture &amp; Design Pattern</span>
+    <header class="sec-head">
+      <span class="sec-kicker"><b>05</b> Kiến trúc &amp; Thiết kế</span>
       <h2>Mô hình Page Object Model (POM) &amp; Playwright Fixture</h2>
-      <p class="pom-lead">
+      <p class="sec-lead">
         Thiết kế theo mô hình Page Object Model: Tách biệt cấu trúc UI, hành động (Actions) và kịch bản kiểm thử (Test Specs) kết hợp Fixture để tái sử dụng tối đa, giảm code trùng lặp và bảo trì dễ dàng khi UI thay đổi.
       </p>
-    </div>
+      <nav class="sec-sub" aria-label="Nội dung mục Kiến trúc">
+        <a href="#pom-arch">📐 Sơ đồ kiến trúc &amp; luồng hoạt động</a>
+        <a href="#pom-map">💻 Mapping code chi tiết</a>
+      </nav>
+    </header>
 
     <!-- Sơ đồ kiến trúc Diagram -->
     <div class="pom-card diagram-card">
       <div class="pom-card-header">
-        <h3><span class="num-icon">📐</span> 1. Sơ đồ kiến trúc &amp; Luồng hoạt động (POM + Fixture)</h3>
+        <h3 id="pom-arch"><span class="num-icon">📐</span> 1. Sơ đồ kiến trúc &amp; Luồng hoạt động (POM + Fixture)</h3>
       </div>
       <div class="pom-diagram-wrap">
         <svg class="pom-svg" viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -164,7 +409,7 @@
     <div class="pom-card code-mapping-card">
       <div class="pom-card-header">
         <div>
-          <h3><span class="num-icon">💻</span> 2. Mapping Code chi tiết</h3>
+          <h3 id="pom-map"><span class="num-icon">💻</span> 2. Mapping Code chi tiết</h3>
           <p class="pom-card-sub">Chuyển hóa từ sơ đồ kiến trúc sang 3 file mã nguồn thực tế trong dự án.</p>
         </div>
       </div>
@@ -280,15 +525,1719 @@ test.describe('Heroku App - Login with POM and Fixture', () => {
 
   </section>
 
+  <!-- ============================================================
+       PLAYWRIGHT'S AGENTICS SECTION
+       ============================================================ -->
+  <section id="agentics" class="agentics-section">
+    <header class="sec-head">
+      <span class="sec-kicker"><b>06</b> Agentic Testing</span>
+      <h2>Playwright's Agentics — 6 chặng từ automation tới agent</h2>
+      <p class="sec-lead">
+        Playwright đã bước vào kỷ nguyên agentic: framework <strong>ship sẵn 3 Test Agents</strong>
+        (<span class="ag-inline-badge">🎭 planner · generator · healer</span>), có <strong>CLI và MCP server</strong>
+        riêng cho coding agent, và từ <strong>1.51</strong> có nút <em>Copy prompt</em> để biến mỗi lỗi thành ngữ cảnh
+        cho AI. Dưới đây là 6 chặng thực chiến, cộng phần mở rộng và danh sách việc
+        <em>nên</em> và <em>không nên</em> giao cho agent.
+      </p>
+      <nav class="ag-roadmap" aria-label="Lộ trình nội dung mục Agentics">
+        <a class="ag-roadmap-stop" href="#ag-flow" data-target="ag-flow" title="Đi tới sơ đồ luồng">
+          <span class="ag-roadmap-node" aria-hidden="true">🤖</span>
+          <span class="ag-roadmap-card">
+            <span class="ag-roadmap-step">FLOW</span>
+            <span class="ag-roadmap-label">Sơ đồ luồng Agentic Testing</span>
+            <code class="ag-roadmap-route">#ag-flow</code>
+          </span>
+        </a>
+        <a class="ag-roadmap-stop" href="#ag-1" data-target="ag-1" title="Đi tới chặng 01">
+          <span class="ag-roadmap-node" aria-hidden="true">🤖</span>
+          <span class="ag-roadmap-card">
+            <span class="ag-roadmap-step">01</span>
+            <span class="ag-roadmap-label">Copy prompt (1.51+)</span>
+            <code class="ag-roadmap-route">#ag-1</code>
+          </span>
+        </a>
+        <a class="ag-roadmap-stop" href="#ag-2" data-target="ag-2" title="Đi tới chặng 02">
+          <span class="ag-roadmap-node" aria-hidden="true">🤖</span>
+          <span class="ag-roadmap-card">
+            <span class="ag-roadmap-step">02</span>
+            <span class="ag-roadmap-label">codegen + Agent Skill</span>
+            <code class="ag-roadmap-route">#ag-2</code>
+          </span>
+        </a>
+        <a class="ag-roadmap-stop" href="#ag-3" data-target="ag-3" title="Đi tới chặng 03">
+          <span class="ag-roadmap-node" aria-hidden="true">🤖</span>
+          <span class="ag-roadmap-card">
+            <span class="ag-roadmap-step">03</span>
+            <span class="ag-roadmap-label">Playwright Test Agents</span>
+            <code class="ag-roadmap-route">#ag-3</code>
+          </span>
+        </a>
+        <a class="ag-roadmap-stop" href="#ag-4" data-target="ag-4" title="Đi tới chặng 04">
+          <span class="ag-roadmap-node" aria-hidden="true">🤖</span>
+          <span class="ag-roadmap-card">
+            <span class="ag-roadmap-step">04</span>
+            <span class="ag-roadmap-label">Regression Selector</span>
+            <code class="ag-roadmap-route">#ag-4</code>
+          </span>
+        </a>
+        <a class="ag-roadmap-stop" href="#ag-5" data-target="ag-5" title="Đi tới chặng 05">
+          <span class="ag-roadmap-node" aria-hidden="true">🤖</span>
+          <span class="ag-roadmap-card">
+            <span class="ag-roadmap-step">05</span>
+            <span class="ag-roadmap-label">AI Review Agent</span>
+            <code class="ag-roadmap-route">#ag-5</code>
+          </span>
+        </a>
+        <a class="ag-roadmap-stop" href="#ag-6" data-target="ag-6" title="Đi tới chặng 06">
+          <span class="ag-roadmap-node" aria-hidden="true">🤖</span>
+          <span class="ag-roadmap-card">
+            <span class="ag-roadmap-step">06</span>
+            <span class="ag-roadmap-label">Mở rộng — CLI / MCP</span>
+            <code class="ag-roadmap-route">#ag-6</code>
+          </span>
+        </a>
+      </nav>
+    </header>
+
+    <div class="agentics-stats">
+      <div class="agentics-stat">
+        <strong>1.51+</strong>
+        <span>Phiên bản có nút <em>Copy prompt</em> ở HTML Report · Trace Viewer · UI Mode</span>
+      </div>
+      <div class="agentics-stat">
+        <strong>3</strong>
+        <span>Agent chính thức: planner · generator · healer, khởi tạo bằng <code>init-agents</code></span>
+      </div>
+      <div class="agentics-stat">
+        <strong>70+</strong>
+        <span>Tool do Playwright MCP / CLI cung cấp cho agent điều khiển browser</span>
+      </div>
+      <div class="agentics-stat">
+        <strong>Skill</strong>
+        <span><code>playwright-cli install --skills</code> và skill cộng đồng từ Currents</span>
+      </div>
+    </div>
+
+    <!-- Sơ đồ luồng Agentic -->
+    <div class="pom-card diagram-card">
+      <div class="pom-card-header">
+        <h3 id="ag-flow"><span class="num-icon">🤖</span> Sơ đồ luồng Agentic Testing trong vòng đời một thay đổi code</h3>
+      </div>
+      <div class="pom-diagram-wrap">
+        <svg class="pom-svg agentics-svg" viewBox="0 0 960 430" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="ag-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#c2410c" />
+            </marker>
+            <marker id="ag-arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
+            </marker>
+          </defs>
+
+          <!-- Stage 0: Developer / QA -->
+          <rect x="30" y="24" width="200" height="82" rx="10" fill="#1a1611" />
+          <text x="130" y="52" fill="#fff" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13" text-anchor="middle">DEV / QA + AGENTS</text>
+          <text x="130" y="72" fill="#fdeede" font-size="11.5" text-anchor="middle">plan → generate → heal</text>
+          <text x="130" y="90" fill="#fdeede" font-size="11.5" text-anchor="middle">init-agents · codegen · UI Mode</text>
+
+          <!-- Stage 1: Copy as Prompt -->
+          <rect x="286" y="24" width="200" height="82" rx="10" fill="#fff" stroke="#c2410c" stroke-width="2" />
+          <text x="386" y="50" fill="#c2410c" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="12.5" text-anchor="middle">1 · COPY AS PROMPT</text>
+          <text x="386" y="70" fill="#57534e" font-size="11" text-anchor="middle">Error + Source + Test info</text>
+          <text x="386" y="87" fill="#57534e" font-size="11" text-anchor="middle">→ clipboard (không gửi server)</text>
+
+          <!-- Stage 2: Skill -->
+          <rect x="542" y="24" width="200" height="82" rx="10" fill="#fff" stroke="#c2410c" stroke-width="2" />
+          <text x="642" y="50" fill="#c2410c" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="12.5" text-anchor="middle">2 · AGENT SKILL</text>
+          <text x="642" y="70" fill="#57534e" font-size="11" text-anchor="middle">Best Practices references</text>
+          <text x="642" y="87" fill="#57534e" font-size="11" text-anchor="middle">→ refactor test sạch, ổn định</text>
+
+          <!-- Arrows top row -->
+          <path d="M 230 65 L 280 65" stroke="#c2410c" stroke-width="2.5" marker-end="url(#ag-arrow)" />
+          <path d="M 486 65 L 536 65" stroke="#c2410c" stroke-width="2.5" marker-end="url(#ag-arrow)" />
+          <path d="M 642 106 C 642 200, 520 200, 520 256 L 520 296" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="6,4" marker-end="url(#ag-arrow-blue)" fill="none" />
+          <text x="600" y="196" fill="#0284c7" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">test đã clean → commit + mở PR</text>
+
+          <!-- CI pipeline box -->
+          <rect x="30" y="140" width="900" height="118" rx="10" fill="#f0f9ff" stroke="#0284c7" stroke-width="2" />
+          <rect x="30" y="140" width="900" height="28" rx="10" fill="#0284c7" />
+          <text x="50" y="159" fill="#fff" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13">CI PIPELINE — PLAYWRIGHT RUN + AGENT LAYER</text>
+          <text x="52" y="192" fill="#0369a1" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="600">npx playwright test --grep @regression</text>
+          <text x="52" y="212" fill="#334155" font-size="11.5">↑ danh sách spec do Regression Selector sinh ra, nạp qua biến môi trường hoặc tag động</text>
+          <text x="52" y="234" fill="#334155" font-size="11.5">Reporter nhận test fail → gọi AI Triage (choice / probability) → quyết định retry · alert · auto-heal</text>
+
+          <path d="M 520 258 L 520 296" stroke="#c2410c" stroke-width="2.5" marker-end="url(#ag-arrow)" />
+          <text x="532" y="284" fill="#c2410c" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">failure log + DOM snapshot</text>
+
+          <!-- Stage 3: Regression Selector -->
+          <rect x="30" y="316" width="270" height="86" rx="10" fill="#fff" stroke="#0284c7" stroke-width="2" />
+          <text x="165" y="342" fill="#0284c7" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="12.5" text-anchor="middle">3 · REGRESSION SELECTOR</text>
+          <text x="165" y="362" fill="#57534e" font-size="11" text-anchor="middle">Đọc PR diff → map sang spec</text>
+          <text x="165" y="379" fill="#57534e" font-size="11" text-anchor="middle">→ chỉ chạy test bị ảnh hưởng</text>
+
+          <!-- Stage 4: AI Reviewer -->
+          <rect x="345" y="316" width="270" height="86" rx="10" fill="#fff" stroke="#0284c7" stroke-width="2" />
+          <text x="480" y="342" fill="#0284c7" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="12.5" text-anchor="middle">4 · AI TEST REVIEWER</text>
+          <text x="480" y="362" fill="#57534e" font-size="11" text-anchor="middle">Soi flaky, locator, assertion</text>
+          <text x="480" y="379" fill="#57534e" font-size="11" text-anchor="middle">→ comment PR + suggested fix</text>
+
+          <!-- Stage 5: Triage -->
+          <rect x="660" y="316" width="270" height="86" rx="10" fill="#fff" stroke="#c2410c" stroke-width="2" />
+          <text x="795" y="342" fill="#c2410c" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="12.5" text-anchor="middle">5 · TRIAGE + SELF-HEAL</text>
+          <text x="795" y="362" fill="#57534e" font-size="11" text-anchor="middle">Phân loại root cause, đề xuất</text>
+          <text x="795" y="379" fill="#57534e" font-size="11" text-anchor="middle">locator mới, tạo PR fix</text>
+
+          <!-- Bottom feedback loop -->
+          <path d="M 660 400 C 560 430, 200 430, 46 336" stroke="#15803d" stroke-width="2.5" stroke-dasharray="6,4" marker-end="url(#ag-arrow)" fill="none" />
+          <text x="300" y="426" fill="#15803d" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">Feedback: case bị bỏ sót → bổ sung mapping cho lần diff sau</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ============ CARD 1: COPY AS PROMPT ============ -->
+    <div class="pom-card agentics-card code-mapping-card">
+      <div class="pom-card-header">
+        <h3 id="ag-1"><span class="num-icon">📋</span> 1. Copy prompt — biến mọi test fail thành ngữ cảnh AI hiểu ngay</h3>
+        <span class="ag-version-pill">Playwright ≥ 1.51</span>
+      </div>
+      <p class="pom-card-sub">
+        Từ bản 1.51, mỗi lỗi trong <strong>HTML Report</strong>, <strong>Trace Viewer</strong> và <strong>UI Mode</strong>
+        đều có nút <em>Copy prompt</em>. Bấm một cái là có ngay prompt đã điền sẵn: thông điệp lỗi cộng toàn bộ ngữ cảnh
+        cần để sửa. Prompt chỉ nằm trong clipboard — Playwright <em>không</em> gửi code của bạn lên server nào.
+      </p>
+
+      <div class="pom-benefits">
+        <div class="benefit-card">
+          <span class="benefit-badge">Vấn đề</span>
+          <h4>Log locator khó đọc</h4>
+          <p>Chuỗi locator lồng nhau + diff chuỗi dài khiến việc tự đọc message mất 10–20 phút mỗi lần fail.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="benefit-badge">Giải pháp</span>
+          <h4>Ngữ cảnh tự đóng gói</h4>
+          <p>Playwright đã có sẵn error, code, test info — chỉ cần đóng gói lại theo định dạng LLM đọc được.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="benefit-badge">Kết quả</span>
+          <h4>Root cause trong vài giây</h4>
+          <p>AI chỉ đúng dòng sai (thường là typo dữ liệu hoặc assertion lệch) và gợi ý đoạn fix cụ thể.</p>
+        </div>
+      </div>
+
+      <div class="pom-tabs">
+        <button class="pom-tab-btn active" data-tab="ag-tab-prompt-anatomy">Cấu trúc prompt được copy</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-prompt-flow">Quy trình sử dụng trong UI Mode</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-prompt-custom">Prompt mẫu tùy biến cho team</button>
+      </div>
+
+      <!-- Tab 1.1: Anatomy -->
+      <div id="ag-tab-prompt-anatomy" class="pom-tab-pane active">
+        <div class="tab-pane-info">
+          <strong>Prompt gồm 4 phần cố định</strong>: (1) chỉ dẫn cho AI, (2) thông tin test, (3) chi tiết lỗi kèm
+          expected / received, (4) source code thật của spec. AI không nhận log thô mà nhận ngữ cảnh đã được sắp xếp.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">Prompt structure — Copy prompt (Playwright 1.51)</span>
+          <span class="lang-tag">Markdown</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-markdown">## Instructions
+You are a senior test automation engineer. Explain why this Playwright test
+failed, be concise, follow Playwright best practices, and suggest a code fix.
+
+## Test info
+- Test: verify max due person name
+- File: tests/table.spec.ts:24:5
+- Project: chromium · Retries: 1 · Duration: 5.2s
+
+## Error
+Error: expect(received).toBe(expected)
+
+Expected: "Jason Doe"
+Received: "Franklin Doe"
+
+Call log:
+  - expect.toBe with timeout 5000ms
+  - waiting for locator('table#table2 tbody tr')
+
+## Source
+```ts
+test('verify max due person name', async ({ page }) =&gt; {
+  await page.goto('/tables');
+  const rows = page.locator('table#table2 tbody tr');
+  const people: { name: string; due: number }[] = [];
+  for (let i = 0; i &lt; await rows.count(); i++) {
+    const row = rows.nth(i);
+    const name = (await row.locator('td:nth-child(2)').textContent()) ?? '';
+    const due = parseFloat(((await row.locator('td:nth-child(4)').textContent()) ?? '').replace('$', ''));
+    people.push({ name: name.trim(), due });
+  }
+  const max = people.reduce((a, b) =&gt; (a.due &gt; b.due ? a : b));
+  expect(max.name).toBe('Jason Doe');
+});
+```</code></pre>
+        <p class="ag-note">
+          ⚠️ Prompt chỉ đúng khi <strong>ngữ cảnh trong test còn đủ</strong>. Nếu bạn che dữ liệu hoặc tách logic ra
+          helper quá xa, hãy đính kèm cả file helper trước khi hỏi AI.
+        </p>
+      </div>
+
+      <!-- Tab 1.2: Flow -->
+      <div id="ag-tab-prompt-flow" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>Nút Copy as Prompt nằm ở 3 nơi</strong>: UI Mode (tab lỗi của test), Trace Viewer (thanh dưới cùng),
+          và HTML Report (khối lỗi của test fail). Luồng dưới đây dùng UI Mode vì cho phép xem trace + sửa code ngay.
+        </div>
+        <ol class="ag-steps">
+          <li><strong>Chạy UI Mode</strong> để watch file và mở test fail ngay khi vừa chạy xong.</li>
+          <li><strong>Đọc tab Error / Call log</strong> để xác định đây là lỗi assertion, locator hay timeout.</li>
+          <li><strong>Bấm Copy as Prompt</strong> — Playwright gom error + source + test info vào clipboard.</li>
+          <li><strong>Dán vào agent</strong> (Cline, Claude Code, Copilot Chat…) kèm câu hỏi bằng tiếng Việt nếu muốn.</li>
+          <li><strong>Áp fix + chạy lại</strong>: UI Mode tự re-run khi file thay đổi, xác nhận xanh trước khi commit.</li>
+        </ol>
+        <div class="code-head">
+          <span class="file-tag">Terminal</span>
+          <span class="lang-tag">Bash</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-bash"># 1. Mở UI Mode (watch mode + trace + pick locator + Copy as Prompt)
+npx playwright test --ui
+
+# 2. Chạy trực tiếp một case đang fail để lấy ngữ cảnh sạch
+npx playwright test tests/table.spec.ts --grep "max due" --trace on
+
+# 3. Mở HTML Report cũ và copy prompt từ report đã lưu
+npx playwright show-report
+
+# 4. Sau khi AI đề xuất fix, xác nhận lại bằng đúng lệnh cũ
+npx playwright test tests/table.spec.ts --grep "max due" --repeat-each=3
+
+# 5. Khi cần trace đầy đủ để đối chiếu DOM snapshot
+npx playwright show-trace test-results/table-max-due/trace.zip</code></pre>
+        <p class="ag-note">
+          ✅ Mẹo: dán prompt rồi hỏi thêm <em>"chỉ rõ đâu là lỗi test, đâu là lỗi sản phẩm"</em> — AI sẽ tách được
+          false-failure do assertion sai khỏi bug thật của ứng dụng.
+        </p>
+        <div class="code-head">
+          <span class="file-tag">playwright.config.ts — thêm git info vào report để prompt có thêm ngữ cảnh</span>
+          <span class="lang-tag">TypeScript</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-typescript">import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  // Commit + diff sẽ hiển thị trong HTML report, giúp prompt và việc triage
+  // biết chính xác code nào đã tạo ra lần chạy này.
+  captureGitInfo: { commit: true, diff: true },
+});</code></pre>
+      </div>
+
+      <!-- Tab 1.3: Custom prompt -->
+      <div id="ag-tab-prompt-custom" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>Chuẩn hóa prompt cho cả team</strong>: ghép prompt của Playwright với template nội bộ để output luôn
+          cùng một format — dễ đọc trong PR comment, dễ log lại vào báo cáo.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">.github/prompts/playwright-debug.md</span>
+          <span class="lang-tag">Markdown</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-markdown">&lt;!-- Dán prompt Copy as Prompt của Playwright vào đây, sau đó bổ sung phần dưới --&gt;
+
+## Quy tắc bắt buộc của team
+1. Phân loại: BUG SẢN PHẨM | LỖI TEST | FLAKY | LỖI MÔI TRƯỜNG.
+2. Luôn đề xuất locator theo thứ tự ưu tiên:
+   getByRole &gt; getByLabel &gt; getByTestId &gt; CSS class (tránh XPath vị trí).
+3. Không dùng waitForTimeout. Nếu cần chờ, dùng expect auto-retry.
+4. Nếu sửa assertion, phải nêu rõ vì sao giá trị expected cũ sai.
+5. Trả về đúng 3 mục: NGUYÊN NHÂN · ĐOẠN CODE SỬA · CÁCH VERIFY LẠI.
+
+## Đầu ra mong muốn
+- Nguyên nhân: &lt;1-2 câu&gt;
+- Patch:
+```diff
+- expect(max.name).toBe('Jason Doe');
++ expect(max.name).toBe('Franklin Doe'); // dữ liệu herokuapp đã đổi
+```
+- Verify: `npx playwright test tests/table.spec.ts --repeat-each=3`</code></pre>
+      </div>
+    </div>
+
+    <!-- ============ CARD 2: CODEGEN + AGENT SKILL ============ -->
+    <div class="pom-card agentics-card code-mapping-card">
+      <div class="pom-card-header">
+        <h3 id="ag-2"><span class="num-icon">🎬</span> 2. codegen + Agent Skill — record thô, agent tinh chỉnh thành test chuẩn</h3>
+        <span class="ag-version-pill">npx playwright codegen · skills</span>
+      </div>
+      <p class="pom-card-sub">
+        <code>npx playwright codegen</code> cho bạn tốc độ: bấm chuột là có code. Nhưng codegen sinh ra
+        <strong>locator dài, không có assertion, không POM, dễ vỡ</strong>. Ghép thêm Agent Skill
+        <code>currents-dev/playwright-best-practices-skill</code> để agent biết chính xác phải sửa gì —
+        thay vì tự đoán theo cảm tính.
+      </p>
+
+      <div class="ag-pipeline">
+        <div class="ag-pipe-step"><span class="ag-pipe-n">1</span><h4>Record</h4><p>codegen ghi lại thao tác thật của bạn trên app.</p></div>
+        <div class="ag-pipe-step"><span class="ag-pipe-n">2</span><h4>Install skill</h4><p><code>npx skills add …</code> — agent nạp kiến thức chuyên gia.</p></div>
+        <div class="ag-pipe-step"><span class="ag-pipe-n">3</span><h4>Convert</h4><p>Agent refactor sang POM + locator role + assertion.</p></div>
+        <div class="ag-pipe-step"><span class="ag-pipe-n">4</span><h4>Verify</h4><p>Chạy lại nhiều lần để chứng minh test không flaky.</p></div>
+      </div>
+
+      <div class="pom-tabs">
+        <button class="pom-tab-btn active" data-tab="ag-tab-skill-install">Cài &amp; kích hoạt Agent Skill</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-skill-before">Bước A — codegen thô (dễ vỡ)</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-skill-after">Bước B — sau khi agent convert</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-skill-check">Checklist review kết quả</button>
+      </div>
+
+      <!-- Tab 2.1: Install skill -->
+      <div id="ag-tab-skill-install" class="pom-tab-pane active">
+        <div class="tab-pane-info">
+          <strong>Có hai nguồn skill nên dùng song song.</strong> Playwright cung cấp skill chính thức cho
+          <code>playwright-cli</code> (mô tả toàn bộ command surface + reference), còn cộng đồng Currents cung cấp bộ
+          reference "best practices" chi tiết theo chủ đề. Cả hai đều theo chuẩn
+          <code>SKILL.md</code> + progressive disclosure.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">Terminal — cài skill chính thức của Playwright</span>
+          <span class="lang-tag">Bash</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-bash"># 1) Cài playwright-cli (CLI dành cho coding agent, token-efficient)
+npm install -g @playwright/cli@latest
+playwright-cli --help
+
+# 2) Cài skill chính thức: vào .claude/skills/playwright-cli (hoặc .agents/skills)
+playwright-cli install --skills
+playwright-cli install --skills=agents      # layout .agents/skills
+playwright-cli install --skills -g          # cài cho mọi project (home directory)
+
+# Skill chính thức bao phủ: run/debug test · mock request · run-code · session
+# management · storage state · test generation · tracing · video · element attributes</code></pre>
+        <div class="tab-pane-info">
+          <strong>Agent Skill là một chuẩn mở</strong> — một thư mục chứa <code>SKILL.md</code> cùng các file
+          reference. Agent chỉ nạp tên + mô tả trước, và chỉ đọc nội dung chi tiết khi tác vụ thật sự liên quan tới
+          Playwright, nên không làm phình context window.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">Terminal — cài skill</span>
+          <span class="lang-tag">Bash</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-bash"># Cài skill từ repo Currents (dùng cho Claude Code, Cursor, VS Code, Cline...)
+npx skills add https://github.com/currents-dev/playwright-best-practices-skill
+
+# Kiểm tra skill đã được nhận diện
+ls -R .claude/skills 2&gt;/dev/null || ls -R .github/skills 2&gt;/dev/null
+
+# Vẫn dùng codegen để lấy nguyên liệu thô
+npx playwright codegen https://the-internet.herokuapp.com/login --target=typescript
+
+# Lưu recording thành file spec để agent có ngữ cảnh chính xác
+npx playwright codegen https://the-internet.herokuapp.com/tables --target=typescript -o tests/_recorded.spec.ts</code></pre>
+        <div class="code-head">
+          <span class="file-tag">Cấu trúc skill sau khi cài</span>
+          <span class="lang-tag">Text</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-text">playwright-best-practices-skill/
+├── SKILL.md                  # metadata + instructions (agent nạp đầu tiên)
+└── references/               # nạp theo nhu cầu (progressive disclosure)
+    ├── locators.md           # ưu tiên getByRole / getByTestId
+    ├── assertions-waiting.md # auto-retry, tránh waitForTimeout
+    ├── debugging.md          # trace viewer, triage flaky
+    ├── pom-and-structure.md  # tổ chức test, fixture, page object
+    ├── auth-and-network.md   # storageState, mock API
+    └── ci-and-sharding.md    # sharding, parallel, retries</code></pre>
+        <p class="ag-note">
+          💡 Skill <strong>tự kích hoạt</strong>: chỉ cần mô tả việc cần làm — "convert recording này thành test chuẩn
+          best practices, dùng POM" — agent sẽ tự đọc skill, không cần gõ chữ "skill" hay "best practices".
+        </p>
+      </div>
+
+      <!-- Tab 2.2: Before (raw codegen) -->
+      <div id="ag-tab-skill-before" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>Đây là output thật của codegen</strong> sau khi record màn hình login. Chạy được, nhưng chưa phải
+          test "sống được lâu": locator phụ thuộc nhãn UI, không có POM, không tách data, và không có bước verify rõ ràng.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">tests/_recorded.spec.ts — TRƯỚC (codegen thô)</span>
+          <span class="lang-tag">TypeScript</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-typescript">import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) =&gt; {
+  await page.goto('https://the-internet.herokuapp.com/login');
+  await page.getByLabel('Username').click();
+  await page.getByLabel('Username').fill('tomsmith');
+  await page.getByLabel('Password').click();
+  await page.getByLabel('Password').fill('SuperSecretPassword!');
+  await page.getByRole('button', { name: ' Login' }).click();
+  await expect(page.locator('#flash')).toContainText('You logged into a secure area!');
+});</code></pre>
+        <ul class="ag-issue-list">
+          <li><strong>Tên test vô nghĩa</strong>: <code>'test'</code> không nói lên điều gì trong report.</li>
+          <li><strong>URL hardcode</strong>: bỏ qua <code>baseURL</code> trong <code>playwright.config.ts</code>.</li>
+          <li><strong>Trùng lặp thao tác</strong>: không tái sử dụng được cho case invalid credentials.</li>
+          <li><strong>Không có POM/fixture</strong>: mỗi lần UI đổi là phải sửa nhiều file.</li>
+          <li><strong>Chỉ có 1 nhánh</strong>: thiếu case âm (sai mật khẩu, sai username) — nơi bug thật hay nằm.</li>
+        </ul>
+      </div>
+
+      <!-- Tab 2.3: After (converted) -->
+      <div id="ag-tab-skill-after" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>Cùng một hành vi, nhưng được agent refactor</strong> theo POM + fixture đã có sẵn trong repo này
+          (<code>pages/login.page.ts</code>, <code>pages/base.ts</code>). Đây là điểm mạnh của skill: agent không chỉ
+          "sửa cú pháp" mà tổ chức lại code theo đúng kiến trúc dự án.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">tests/_recorded.spec.ts — SAU (agent convert)</span>
+          <span class="lang-tag">TypeScript</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-typescript">import { test, expect } from '../pages/base';
+
+test.describe('Heroku App - Login (converted from codegen)', () =&gt; {
+  test.beforeEach(async ({ loginPage }) =&gt; {
+    await loginPage.goto();               // dùng baseURL, không hardcode
+  });
+
+  test('login with valid credentials', async ({ loginPage }) =&gt; {
+    await test.step('đăng nhập bằng tài khoản hợp lệ', async () =&gt; {
+      await loginPage.login('tomsmith', 'SuperSecretPassword!');
+    });
+
+    await test.step('xác nhận thông báo thành công', async () =&gt; {
+      await expect(loginPage.flashMessage).toContainText('You logged into a secure area!');
+      await expect(loginPage.page).toHaveURL(/.*\/secure/);
+    });
+  });
+
+  test('login with invalid password', async ({ loginPage }) =&gt; {
+    await loginPage.login('tomsmith', 'SaiMatKhau!');
+    await expect(loginPage.flashMessage).toContainText('Your password is invalid!');
+    await expect(loginPage.page).toHaveURL(/.*\/login/);
+  });
+});</code></pre>
+        <div class="code-head">
+          <span class="file-tag">Prompt dùng để convert (gửi kèm recording)</span>
+          <span class="lang-tag">Text</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-text">Đọc tests/_recorded.spec.ts (codegen thô) và refactor thành test chuẩn best practices:
+
+1. Tái sử dụng LoginPage + fixture đã có trong pages/login.page.ts và pages/base.ts,
+   không tạo instance mới, không hardcode URL.
+2. Locator: giữ getByRole/getByLabel, bỏ .click() thừa trước fill, bỏ locator theo vị trí.
+3. Đặt tên test theo hành vi + kết quả mong đợi; thêm test.step() cho từng giai đoạn.
+4. Bổ sung các nhánh âm: sai password, sai username, bỏ trống field.
+5. Mọi assertion dùng expect auto-retry; không dùng waitForTimeout.
+6. Trả về diff từng bước và lệnh verify cuối cùng.</code></pre>
+      </div>
+
+      <!-- Tab 2.4: Checklist -->
+      <div id="ag-tab-skill-check" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>Đừng tin agent 100%</strong>. Đây là checklist dùng để review kết quả convert trước khi merge —
+          mỗi dòng đều kiểm tra được bằng mắt hoặc bằng lệnh chạy.
+        </div>
+        <div class="ag-checklist">
+          <label class="ag-check"><input type="checkbox" disabled checked /> <span>Locator dùng <code>getByRole</code> / <code>getByLabel</code> / <code>getByTestId</code>, không có XPath theo vị trí.</span></label>
+          <label class="ag-check"><input type="checkbox" disabled checked /> <span>Không còn <code>waitForTimeout</code>; mọi chờ đợi dựa vào <code>expect</code> auto-retry.</span></label>
+          <label class="ag-check"><input type="checkbox" disabled checked /> <span>Mỗi test có ít nhất một assertion thực sự kiểm chứng kết quả, không chỉ thao tác.</span></label>
+          <label class="ag-check"><input type="checkbox" disabled checked /> <span>Test độc lập, chạy song song được, không phụ thuộc thứ tự hay dữ liệu của test khác.</span></label>
+          <label class="ag-check"><input type="checkbox" disabled checked /> <span>Không hardcode URL/credential; lấy từ <code>baseURL</code>, fixture hoặc biến môi trường.</span></label>
+          <label class="ag-check"><input type="checkbox" disabled checked /> <span>Đã chạy <code>--repeat-each=3</code> và xanh ổn định, không có flaky.</span></label>
+          <label class="ag-check"><input type="checkbox" disabled checked /> <span>Đã gắn tag (<code>@smoke</code>, <code>@regression</code>) để phục vụ lọc ở bước 3.</span></label>
+        </div>
+        <div class="code-head">
+          <span class="file-tag">Terminal — verify trước khi merge</span>
+          <span class="lang-tag">Bash</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-bash"># Type-check + lint nhanh
+npx tsc --noEmit -p tsconfig.json
+
+# Chạy lại 3 lần để phát hiện flaky (điều kiện tối thiểu trước khi merge)
+npx playwright test tests/login.pom.spec.ts --repeat-each=3
+
+# Chạy trên đúng môi trường CI để bắt khác biệt timing
+CI=1 npx playwright test tests/login.pom.spec.ts --workers=2</code></pre>
+      </div>
+    </div>
+
+    <!-- ============ CARD 3: OFFICIAL PLAYWRIGHT TEST AGENTS ============ -->
+    <div class="pom-card agentics-card code-mapping-card ag-featured-card">
+      <div class="pom-card-header">
+        <h3 id="ag-3"><span class="num-icon">🎭</span> 3. Playwright Test Agents chính thức — planner · generator · healer</h3>
+        <span class="ag-version-pill">npx playwright init-agents</span>
+      </div>
+      <p class="pom-card-sub">
+        Không còn là "tự chế": Playwright <strong>ship sẵn 3 agent trong chính framework</strong> — dùng độc lập,
+        tuần tự, hoặc móc thành vòng lặp agentic. Chạy đủ 3 bước tuần tự là bạn có luôn phủ test cho một tính năng mới.
+      </p>
+
+      <div class="ag-agents-grid">
+        <div class="ag-agent-card">
+          <div class="ag-agent-emoji">🎭</div>
+          <h4>planner</h4>
+          <p class="ag-agent-role">Khám phá &amp; lập kế hoạch</p>
+          <p class="ag-agent-desc">Tự duyệt app như người dùng, rồi viết <strong>test plan Markdown</strong> ở
+            <code>specs/</code> — đọc được bởi người, đủ chính xác cho máy.</p>
+        </div>
+        <div class="ag-agent-card">
+          <div class="ag-agent-emoji">🎭</div>
+          <h4>generator</h4>
+          <p class="ag-agent-role">Plan → code Playwright</p>
+          <p class="ag-agent-desc">Biến plan Markdown thành <strong>spec thật</strong> trong <code>tests/</code>, dùng
+            locator theo role và web-first assertion.</p>
+        </div>
+        <div class="ag-agent-card">
+          <div class="ag-agent-emoji">🎭</div>
+          <h4>healer</h4>
+          <p class="ag-agent-role">Chạy suite &amp; tự sửa</p>
+          <p class="ag-agent-desc">Replay bước fail, soi UI hiện tại, đề xuất patch và
+            <strong>chạy lại tới khi xanh</strong> (hoặc skip nếu cho rằng app đã hỏng thật).</p>
+        </div>
+      </div>
+
+      <div class="ag-loop">
+        <span class="ag-loop-step">plan</span>
+        <span class="ag-loop-arrow">→</span>
+        <span class="ag-loop-step">generate</span>
+        <span class="ag-loop-arrow">→</span>
+        <span class="ag-loop-step">heal</span>
+        <span class="ag-loop-arrow">↻</span>
+        <span class="ag-loop-note">lặp lại khi Playwright nâng version (agent definitions cần regenerate)</span>
+      </div>
+
+      <div class="pom-tabs">
+        <button class="pom-tab-btn active" data-tab="ag-tab-agents-init">Cài agent vào repo</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-agents-planner">🎭 planner — sinh test plan</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-agents-generator">🎭 generator — plan thành test</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-agents-healer">🎭 healer — tự sửa test fail</button>
+      </div>
+
+      <!-- Tab 3.1: init agents -->
+      <div id="ag-tab-agents-init" class="pom-tab-pane active">
+        <div class="tab-pane-info">
+          <strong>Bước đầu tiên là copy "định nghĩa agent" vào repo.</strong> Lệnh khác nhau theo công cụ AI bạn dùng;
+          định nghĩa này là tập hợp instructions + MCP tools do Playwright cung cấp, nên phải
+          <strong>regenerate mỗi khi nâng version Playwright</strong>.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">Terminal — tạo agent definitions</span>
+          <span class="lang-tag">Bash</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-bash"># Chọn đúng "loop" theo công cụ bạn dùng — chạy 1 lần, lặp lại sau mỗi lần upgrade Playwright
+npx playwright init-agents --loop=vscode     # GitHub Copilot trong VS Code (cần VS Code >= 1.105)
+npx playwright init-agents --loop=claude     # Claude Code (subagents)
+npx playwright init-agents --loop=codex      # Codex
+npx playwright init-agents --loop=opencode   # OpenCode
+
+# Sau khi regenerate, xem lại file định nghĩa có thay đổi gì rồi mới commit
+git diff --stat .github/ .claude/</code></pre>
+        <div class="code-head">
+          <span class="file-tag">Cấu trúc thư mục sau khi khởi tạo</span>
+          <span class="lang-tag">Text</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-text">repo/
+├── .github/                              # định nghĩa agent (theo loop đã chọn)
+├── specs/                                # test plan do planner sinh ra (Markdown)
+│   └── basic-operations.md
+├── tests/
+│   ├── seed.spec.ts                      # seed test: dựng môi trường + fixture chuẩn
+│   └── create/add-valid-todo.spec.ts     # test do generator sinh ra
+└── playwright.config.ts</code></pre>
+        <p class="ag-note">
+          🌱 <strong>Seed test là chìa khóa</strong>: planner sẽ chạy <code>tests/seed.spec.ts</code> để thực thi
+          global setup, project dependencies, fixture và hook — nhờ đó nó "nhìn" app đúng trạng thái như test thật,
+          và cũng dùng file đó làm mẫu phong cách cho toàn bộ test sinh ra sau này.
+        </p>
+      </div>
+
+      <!-- Tab 3.2: planner -->
+      <div id="ag-tab-agents-planner" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>planner nhận 3 loại input</strong>: yêu cầu bằng ngôn ngữ tự nhiên, một seed test (để biết cách dựng
+          môi trường), và PRD nếu có. Output là file Markdown trong <code>specs/</code> — vừa là tài liệu review cho QA,
+          vừa là input chính xác cho generator.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">Prompt gửi cho planner (theo loop đã cài)</span>
+          <span class="lang-tag">Text</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-text">Tạo test plan cho luồng đăng nhập của https://the-internet.herokuapp.com/login.
+
+Bối cảnh:
+- Dùng tests/seed.spec.ts để khởi tạo môi trường (fixture pages/base.ts, baseURL đã cấu hình).
+- Kiến trúc dự án theo POM: pages/login.page.ts đã có login(), flashMessage.
+- Test case hiện có nằm trong TESTCASES.md (nhóm TC01) — không trùng lặp, hãy mở rộng thêm.
+
+Yêu cầu cho plan:
+1. Bao phủ: happy path, sai mật khẩu, sai username, bỏ trống field, logout quay lại /login.
+2. Mỗi scenario ghi rõ: bước thao tác, dữ liệu vào, kết quả mong đợi quan sát được.
+3. Nêu rõ assertion web-first sẽ dùng cho từng expected result.
+4. Lưu thành specs/login-authentication.md, đánh số scenario để truy vết về TC id.</code></pre>
+        <div class="code-head">
+          <span class="file-tag">specs/login-authentication.md — trích output của planner</span>
+          <span class="lang-tag">Markdown</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-markdown"># Login — Test Plan
+
+## Application Overview
+Trang Login của the-internet gồm 2 field (Username, Password) và nút Login.
+Kết quả được thông báo qua flash message (`#flash`) và URL thay đổi theo vai trò
+(`/secure` khi thành công, giữ `/login` khi thất bại).
+
+## Scenarios
+
+### Scenario 1 — Đăng nhập thành công (happy path)
+**Steps:** mở /login → nhập tomsmith → nhập SuperSecretPassword! → bấm Login
+**Input:** username=tomsmith, password=SuperSecretPassword!
+**Expected:**
+- flash message: "You logged into a secure area!"
+- URL khớp /secure
+- nút Logout hiển thị
+
+### Scenario 2 — Sai mật khẩu
+**Steps:** mở /login → nhập tomsmith → nhập SaiMatKhau! → bấm Login
+**Expected:**
+- flash message: "Your password is invalid!"
+- URL vẫn ở /login
+
+### Scenario 3 — Sai username
+**Expected:** flash message: "Your username is invalid!"
+
+### Scenario 4 — Bỏ trống cả hai field
+**Expected:** vẫn ở /login, không có flash success nào
+
+### Scenario 5 — Logout sau khi đăng nhập
+**Steps:** login thành công → bấm Logout
+**Expected:** URL quay về /login, flash message: "You logged out of the secure area!"</code></pre>
+        <p class="ag-note">
+          🧭 <strong>Con người review plan, không review code.</strong> Sửa plan mất 2 phút; sửa 20 spec sinh sai mất
+          2 giờ. Đây là điểm "human-in-the-loop" rẻ nhất trong cả vòng lặp agentic.
+        </p>
+      </div>
+
+      <!-- Tab 3.3: generator -->
+      <div id="ag-tab-agents-generator" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>generator đọc plan trong <code>specs/</code> và viết test vào <code>tests/</code></strong>, ưu tiên
+          ánh xạ 1-1 plan → spec. Playwright còn cung cấp <em>generation hints</em> và một
+          <em>catalog assertion</em> để test sinh ra kiểm chứng cả cấu trúc lẫn hành vi, thay vì chỉ "chạy được".
+        </div>
+        <div class="code-head">
+          <span class="file-tag">Prompt gửi cho generator</span>
+          <span class="lang-tag">Text</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-text">Từ specs/login-authentication.md, sinh test vào tests/login-agents.spec.ts.
+
+Ràng buộc:
+- Dùng fixture từ pages/base.ts (loginPage), không tạo instance mới.
+- Mỗi scenario của plan = một test, tên test nêu hành vi + kết quả mong đợi.
+- Chỉ dùng locator theo role/label; assertion web-first có auto-retry.
+- Ghi chú ở đầu mỗi test: spec nguồn (specs/...) và seed (tests/seed.spec.ts).
+- Nhóm theo test.describe, thêm tag @smoke cho happy path, @regression cho phần còn lại.</code></pre>
+        <div class="code-head">
+          <span class="file-tag">tests/login-agents.spec.ts — output của generator</span>
+          <span class="lang-tag">TypeScript</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-typescript">// spec: specs/login-authentication.md
+// seed: tests/seed.spec.ts
+import { test, expect } from '../pages/base';
+
+test.describe('Login Authentication', () =&gt; {
+  test.beforeEach(async ({ loginPage }) =&gt; {
+    await loginPage.goto();
+  });
+
+  test('@smoke đăng nhập thành công và chuyển vào khu vực secure', async ({ loginPage }) =&gt; {
+    // 1. Nhập username hợp lệ
+    await loginPage.usernameInput.fill('tomsmith');
+    // 2. Nhập password hợp lệ
+    await loginPage.passwordInput.fill('SuperSecretPassword!');
+    // 3. Bấm Login
+    await loginPage.loginButton.click();
+
+    // Expected Results:
+    // - flash message xác nhận đăng nhập thành công
+    await expect(loginPage.flashMessage).toContainText('You logged into a secure area!');
+    // - URL chuyển sang /secure
+    await expect(loginPage.page).toHaveURL(/.*\/secure/);
+    // - nút Logout hiển thị
+    await expect(loginPage.page.getByRole('link', { name: 'Logout' })).toBeVisible();
+  });
+
+  test('@regression sai mật khẩu thì báo lỗi và ở lại trang login', async ({ loginPage }) =&gt; {
+    await loginPage.usernameInput.fill('tomsmith');
+    await loginPage.passwordInput.fill('SaiMatKhau!');
+    await loginPage.loginButton.click();
+
+    await expect(loginPage.flashMessage).toContainText('Your password is invalid!');
+    await expect(loginPage.page).toHaveURL(/.*\/login/);
+  });
+
+  test('@regression bỏ trống cả hai field không cho đăng nhập', async ({ loginPage }) =&gt; {
+    await loginPage.loginButton.click();
+
+    await expect(loginPage.page).toHaveURL(/.*\/login/);
+    await expect(loginPage.flashMessage).not.toContainText('You logged into a secure area!');
+  });
+});</code></pre>
+        <p class="ag-note">
+          🧾 Chú thích <code>// spec:</code> và <code>// seed:</code> ở đầu file <strong>không phải trang trí</strong> —
+          đó là truy vết hai chiều giữa plan và code, giúp generator/healer lần sau biết ngữ cảnh để cập nhật đúng chỗ.
+        </p>
+      </div>
+
+      <!-- Tab 3.4: healer -->
+      <div id="ag-tab-agents-healer" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>healer là agent hữu ích nhất trong vận hành hàng ngày</strong>. Cho nó một test fail, nó replay đúng
+          các bước, soi UI hiện tại để tìm phần tử tương đương, đề xuất patch (locator / wait / dữ liệu) và chạy lại
+          cho tới khi pass — hoặc dừng lại nếu cho rằng chức năng đã hỏng thật.
+        </div>
+        <ol class="ag-steps">
+          <li><strong>Replay</strong> các bước đã fail để tái hiện đúng trạng thái.</li>
+          <li><strong>Inspect UI hiện tại</strong> — tìm element/flow tương đương với thứ locator cũ trỏ tới.</li>
+          <li><strong>Đề xuất patch</strong>: cập nhật locator, điều chỉnh cách chờ, hoặc sửa dữ liệu test.</li>
+          <li><strong>Re-run trong vòng lặp</strong> tới khi pass, có guardrail để không lặp vô hạn.</li>
+          <li><strong>Nhánh còn lại</strong>: nếu kết luận chức năng hỏng thật → <em>skip</em> test kèm lý do thay vì "sửa cho xanh".</li>
+        </ol>
+        <div class="code-head">
+          <span class="file-tag">Prompt gửi cho healer</span>
+          <span class="lang-tag">Text</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-text">Test "verify max due person name" (tests/table.spec.ts) đang fail.
+
+Hãy heal theo đúng thứ tự sau, và DỪNG ngay khi biết là bug sản phẩm:
+1. Replay test để xác nhận lỗi tái hiện được (không flaky).
+2. Kiểm tra DOM hiện tại của /tables; xác định bảng nào, cột nào, và dữ liệu thật.
+3. Chỉ sửa khi nguyên nhân là DO TEST (locator sai, thứ tự cột đổi, dữ liệu mẫu lệch).
+   - Nếu dữ liệu app đổi thật: cập nhật expected value và ghi rõ nguồn để QA xác nhận.
+   - Nếu UI đổi cấu trúc: cập nhật theo hướng POM, không nhét locator mới vào spec.
+4. Nếu bảng/cột không còn tồn tại hoặc hành vi sai lệch thông số nghiệp vụ
+   → KHÔNG sửa test, đánh dấu thành bug và skip kèm lý do.
+5. Chạy lại tối đa 3 lần với --repeat-each=3, chỉ báo xong khi xanh ổn định.</code></pre>
+        <div class="ag-compare">
+          <div class="ag-compare-col ag-compare-do">
+            <h4>✅ healer tự sửa được</h4>
+            <ul>
+              <li>Locator cũ không còn khớp do DOM đổi (id/class/nhãn).</li>
+              <li>Thứ tự cột/bảng thay đổi nhưng nghiệp vụ vẫn đúng.</li>
+              <li>Thiếu bước chờ làm test fail sớm — thay bằng web-first assertion.</li>
+              <li>Dữ liệu mẫu trên môi trường demo đổi giá trị.</li>
+            </ul>
+          </div>
+          <div class="ag-compare-col ag-compare-dont">
+            <h4>🚫 healer không được phép "sửa"</h4>
+            <ul>
+              <li>Hạ assertion cho vừa kết quả sai (che bug thật).</li>
+              <li>Đổi expected value nghiệp vụ mà không có người xác nhận.</li>
+              <li>Bọc <code>try/catch</code> để test "xanh" giả.</li>
+              <li>Tăng timeout vô tội vạ thay vì tìm nguyên nhân chậm.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="ag-note">
+          🔗 Repo này đã có một nửa hành trình self-healing: <code>utils/jevTriage.ts</code> phân loại nguyên nhân
+          (ASSERTION · LOCATOR_ISSUE · NETWORK/MÔI TRƯỜNG) và <code>reporters/JevAutoTriageReporter.ts</code> tự động
+          gọi agent khi <code>confidence &gt;= 0.85</code> để sửa <em>Page Object</em> — đúng nguyên tắc "healer chỉ
+          chạm POM, không chạm assertion nghiệp vụ".
+        </p>
+      </div>
+    </div>
+
+    <!-- ============ CARD 3: REGRESSION SELECTOR ============ -->
+    <div class="pom-card agentics-card code-mapping-card">
+      <div class="pom-card-header">
+        <h3 id="ag-4"><span class="num-icon">🎯</span> 4. Regression Selector Agent — đọc PR diff để chọn đúng test cần chạy</h3>
+        <span class="ag-version-pill">git diff · LLM ranking</span>
+      </div>
+      <p class="pom-card-sub">
+        Vấn đề muôn thuở: PR chỉ sửa 1 validate ở form login nhưng CI vẫn chạy cả 60 spec — chậm, tốn tiền, và
+        tín hiệu chất lượng bị loãng. Agent này đọc <strong>danh sách file thay đổi</strong> cộng với
+        <strong>bản đồ test ↔ code</strong>, rồi quyết định spec nào thật sự bị ảnh hưởng.
+        Nguyên tắc vàng: <em>heuristic trước, LLM sau</em> — chỉ gọi AI cho các case mơ hồ để tiết kiệm chi phí.
+      </p>
+
+      <div class="pom-benefits">
+        <div class="benefit-card">
+          <span class="benefit-badge">Input</span>
+          <h4>PR diff + test map</h4>
+          <p><code>git diff --name-only</code> và file mapping spec ↔ route ↔ tag ↔ POM class.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="benefit-badge">Xử lý</span>
+          <h4>Rule + LLM ranking</h4>
+          <p>Rule theo đường dẫn/route; phần mơ hồ đưa cho model chấm <em>affected / not affected</em>.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="benefit-badge">Output</span>
+          <h4>Danh sách spec + grep</h4>
+          <p>Sinh <code>regression-selected.txt</code> để CI chạy đúng tập con, vẫn giữ smoke luôn chạy.</p>
+        </div>
+      </div>
+
+      <div class="pom-tabs">
+        <button class="pom-tab-btn active" data-tab="ag-tab-reg-map">Bước 1 — Bản đồ test ↔ code</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-reg-script">Bước 2 — Script chọn regression</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-reg-ci">Bước 3 — Nối vào CI/CD</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-reg-safety">Bước 4 — Chống bỏ sót (safety net)</button>
+      </div>
+
+      <!-- Tab 3.1: test map -->
+      <div id="ag-tab-reg-map" class="pom-tab-pane active">
+        <div class="tab-pane-info">
+          <strong>Không có bản đồ thì agent chỉ đoán mò.</strong> Repo này đã có sẵn nguyên liệu: mỗi test case trong
+          <code>TESTCASES.md</code> gắn với một route, một file spec và một nhóm kỹ thuật (<code>web/data-*.js</code>).
+          Chỉ cần xuất ra JSON một lần rồi cập nhật tự động bằng script.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">test-map.json (sinh từ TESTCASES.md + khai báo trong spec)</span>
+          <span class="lang-tag">JSON</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-json">[
+  {
+    "spec": "tests/login.spec.ts",
+    "cases": ["TC01.1", "TC01.2", "TC01.3"],
+    "routes": ["/login", "/secure"],
+    "pageObjects": ["pages/login.page.ts", "pages/base.ts"],
+    "tags": ["@smoke", "@auth"],
+    "risk": "high"
+  },
+  {
+    "spec": "tests/table.spec.ts",
+    "cases": ["TC05.1", "TC05.2"],
+    "routes": ["/tables"],
+    "pageObjects": [],
+    "tags": ["@regression", "@data"],
+    "risk": "medium"
+  },
+  {
+    "spec": "tests/slowResources.spec.ts",
+    "cases": ["TC25.4"],
+    "routes": ["/slow"],
+    "pageObjects": [],
+    "tags": ["@regression", "@flaky-prone", "@timeout"],
+    "risk": "low"
+  }
+]</code></pre>
+        <div class="code-head">
+          <span class="file-tag">scripts/build-test-map.ts — tự sinh bản đồ, tránh lệch thủ công</span>
+          <span class="lang-tag">TypeScript</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-typescript">import * as fs from 'fs';
+import * as path from 'path';
+
+type Entry = {
+  spec: string;
+  cases: string[];
+  routes: string[];
+  pageObjects: string[];
+  tags: string[];
+  risk: 'high' | 'medium' | 'low';
+};
+
+// Quét chính source of truth: mọi file spec trong tests/
+const specDir = path.join(process.cwd(), 'tests');
+const entries: Entry[] = [];
+
+for (const file of fs.readdirSync(specDir).filter((f) =&gt; f.endsWith('.spec.ts'))) {
+  const source = fs.readFileSync(path.join(specDir, file), 'utf-8');
+
+  const cases = [...source.matchAll(/TC\d{2}(?:\.\d+)?/g)].map((m) =&gt; m[0]);
+  const routes = [...source.matchAll(/goto\(\s*['"`]([^'"`]+)['"`]/g)].map((m) =&gt; m[1]);
+  const pageObjects = [...source.matchAll(/from\s+['"]\.\.\/pages\/([\w.-]+)['"]/g)]
+    .map((m) =&gt; `pages/${m[1]}`);
+  const tags = [...source.matchAll(/@[a-z-]+/g)].map((m) =&gt; m[0]);
+
+  entries.push({
+    spec: `tests/${file}`,
+    cases: [...new Set(cases)],
+    routes: [...new Set(routes)],
+    pageObjects: [...new Set(pageObjects)],
+    tags: [...new Set(tags)],
+    risk: pageObjects.length &gt; 0 ? 'high' : 'medium',
+  });
+}
+
+fs.writeFileSync('test-map.json', JSON.stringify(entries, null, 2));
+console.log(`✅ Đã sinh test-map.json cho ${entries.length} spec`);</code></pre>
+        <p class="ag-note">
+          📌 Đặt lịch chạy <code>build-test-map.ts</code> trong pre-commit hoặc trong CI bước đầu tiên — bản đồ lệch
+          là nguyên nhân số 1 khiến agent chọn thiếu test.
+        </p>
+      </div>
+
+      <!-- Tab 3.2: selector script -->
+      <div id="ag-tab-reg-script" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>Hai tầng quyết định</strong>: (1) rule tất định — file POM đổi thì mọi spec import nó bị ảnh hưởng;
+          (2) LLM chỉ chấm điểm cho các spec <em>còn lại</em> dựa trên nội dung diff. Cách này vừa rẻ, vừa giải thích
+          được lý do chọn, và tái dùng đúng pattern <code>@typesafe-ai/sdk</code> đã có trong
+          <code>utils/jevTriage.ts</code>.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">scripts/select-regression.ts</span>
+          <span class="lang-tag">TypeScript</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-typescript">import { execSync } from 'child_process';
+import * as fs from 'fs';
+import { TypeSafeClient, choice } from '@typesafe-ai/sdk';
+
+type Entry = {
+  spec: string;
+  cases: string[];
+  routes: string[];
+  pageObjects: string[];
+  tags: string[];
+  risk: 'high' | 'medium' | 'low';
+};
+
+const client = new TypeSafeClient();
+const map: Entry[] = JSON.parse(fs.readFileSync('test-map.json', 'utf-8'));
+
+function changedFiles(): string[] {
+  const base = process.env.GITHUB_BASE_REF ? `origin/${process.env.GITHUB_BASE_REF}` : 'origin/main';
+  return execSync(`git diff --name-only ${base}...HEAD`, { encoding: 'utf-8' })
+    .split('\n')
+    .map((f) =&gt; f.trim())
+    .filter(Boolean);
+}
+
+function diffText(): string {
+  const base = process.env.GITHUB_BASE_REF ? `origin/${process.env.GITHUB_BASE_REF}` : 'origin/main';
+  // Cắt bớt để tiết kiệm token: chỉ lấy 200 dòng đầu của diff
+  return execSync(`git diff ${base}...HEAD`, { encoding: 'utf-8' }).split('\n').slice(0, 200).join('\n');
+}
+
+const files = changedFiles();
+const codeDiff = diffText();
+
+// ---------- Tầng 1: rule tất định ----------
+const picked = new Map&lt;string, string&gt;();
+
+for (const entry of map) {
+  const hitByPageObject = entry.pageObjects.some((po) =&gt; files.includes(po));
+  const hitBySpec = files.includes(entry.spec);
+  if (hitByPageObject) picked.set(entry.spec, 'POM thay đổi → mọi spec import nó đều bị ảnh hưởng');
+  if (hitBySpec) picked.set(entry.spec, 'Spec bị sửa trực tiếp trong PR');
+}
+
+// Smoke luôn chạy dù diff không chạm tới
+for (const entry of map) {
+  if (entry.tags.includes('@smoke')) picked.set(entry.spec, 'Smoke set: luôn chạy trên mọi PR');
+}
+
+// ---------- Tầng 2: LLM chấm cho các spec còn lại ----------
+const ambiguous = map.filter((e) =&gt; !picked.has(e.spec));
+
+const judged = await Promise.all(
+  ambiguous.map(async (entry) =&gt; {
+    const { answers } = await client.systemOne({
+      state: [
+        `Changed files:\n${files.join('\n')}`,
+        `Diff (trích):\n${codeDiff}`,
+        `Spec đang xét: ${entry.spec}`,
+        `Routes liên quan: ${entry.routes.join(', ') || 'không rõ'}`,
+        `Test cases: ${entry.cases.join(', ')}`,
+      ].join('\n\n'),
+      questions: {
+        impact: choice('PR này có khả năng làm fail spec trên không?', {
+          AFFECTED: 'Diff chạm vào luồng/route/assertion mà spec này đang kiểm thử',
+          NOT_AFFECTED: 'Không liên quan trực tiếp, chạy thêm chỉ tốn thời gian',
+          UNSURE: 'Không đủ dữ kiện để kết luận, nên chạy để an toàn',
+        }),
+      },
+    });
+
+    const decision = answers.impact;
+    return { spec: entry.spec, choice: decision.choice, confidence: decision.confidence };
+  })
+);
+
+for (const j of judged) {
+  // Fail-safe: chỉ bỏ qua khi AI tự tin cao rằng không ảnh hưởng
+  if (j.choice === 'NOT_AFFECTED' &amp;&amp; j.confidence &gt;= 0.8) continue;
+  picked.set(j.spec, `AI: ${j.choice} (confidence ${j.confidence})`);
+}
+
+// ---------- Xuất kết quả ----------
+const specs = [...picked.keys()].sort();
+fs.writeFileSync('regression-selected.txt', specs.join('\n'));
+console.log(`🎯 Đã chọn ${specs.length}/${map.length} spec:`);
+for (const [spec, reason] of picked) console.log(` - ${spec}  ← ${reason}`);</code></pre>
+        <p class="ag-note">
+          ⚖️ Ngưỡng <code>confidence &gt;= 0.8</code> là "công tắc an toàn": AI chỉ được phép <em>loại bỏ</em> test khi
+          rất chắc chắn; mọi trường hợp mơ hồ đều mặc định <strong>chạy</strong>. Không bao giờ để agent tự ý giảm
+          phạm vi kiểm thử khi độ tin cậy thấp.
+        </p>
+      </div>
+
+      <!-- Tab 3.3: CI wiring -->
+      <div id="ag-tab-reg-ci" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>Chạy đúng tập con</strong>: script ghi ra <code>regression-selected.txt</code>, CI đọc file đó và
+          truyền vào Playwright. Vẫn giữ job "full suite" chạy theo lịch đêm để bắt các lỗi mà diff không thể đoán.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">.github/workflows/playwright.yml — thêm bước chọn regression</span>
+          <span class="lang-tag">YAML</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-yaml">name: Playwright Tests
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  select:
+    runs-on: ubuntu-latest
+    outputs:
+      specs: ${{ steps.pick.outputs.specs }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0            # cần full history để git diff hoạt động
+      - uses: actions/setup-node@v4
+        with: { node-version: 'lts/*' }
+      - run: npm ci
+      - name: Build test map
+        run: npx tsx scripts/build-test-map.ts
+      - name: Select affected specs (AI agent)
+        id: pick
+        env:
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+        run: |
+          npx tsx scripts/select-regression.ts
+          SPECS=$(tr '\n' ' ' &lt; regression-selected.txt)
+          echo "specs=$SPECS" &gt;&gt; "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: regression-plan
+          path: regression-selected.txt
+
+  test:
+    needs: select
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 'lts/*' }
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Run selected regression only
+        run: npx playwright test ${{ needs.select.outputs.specs }} --grep-invert @flaky-prone
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/</code></pre>
+        <div class="code-head">
+          <span class="file-tag">Terminal — dùng local trước khi commit</span>
+          <span class="lang-tag">Bash</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-bash"># Sinh bản đồ rồi xem agent chọn gì cho nhánh hiện tại
+npx tsx scripts/build-test-map.ts
+npx tsx scripts/select-regression.ts
+
+# Chạy đúng những spec được chọn
+npx playwright test $(tr '\n' ' ' &lt; regression-selected.txt)
+
+# So sánh chi phí: chỉ chạy tập con vs toàn bộ
+time npx playwright test $(tr '\n' ' ' &lt; regression-selected.txt)
+time npx playwright test</code></pre>
+      </div>
+
+      <!-- Tab 3.4: safety net -->
+      <div id="ag-tab-reg-safety" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>Bỏ sót là rủi ro thật.</strong> Nếu chỉ chạy tập con, phải có lưới an toàn để phát hiện việc chọn
+          thiếu. Bốn cơ chế dưới đây đủ để regression selection dùng được trong dự án thật.
+        </div>
+        <div class="ag-safety-grid">
+          <div class="ag-safety-item">
+            <span class="ag-safety-tag">Nightly full run</span>
+            <h4>Chạy toàn bộ suite mỗi đêm</h4>
+            <p>So sánh tập con ban ngày với full run ban đêm — chênh lệch chính là các case bị chọn thiếu.</p>
+          </div>
+          <div class="ag-safety-item">
+            <span class="ag-safety-tag">Auto-escalate</span>
+            <h4>Diff quá lớn thì chạy hết</h4>
+            <p>Nếu PR chạm &gt; N file hoặc thay đổi core (config, fixture, page object dùng chung) → bỏ qua agent, chạy full.</p>
+          </div>
+          <div class="ag-safety-item">
+            <span class="ag-safety-tag">Fallback</span>
+            <h4>Agent lỗi thì mặc định chạy hết</h4>
+            <p><code>try/catch</code> quanh bước gọi AI; API lỗi hoặc hết quota → ghi full danh sách, không "im lặng bỏ qua".</p>
+          </div>
+          <div class="ag-safety-item">
+            <span class="ag-safety-tag">Audit trail</span>
+            <h4>Log lý do chọn vào artifact</h4>
+            <p>Mỗi spec kèm lý do (<em>POM đổi</em> / <em>AI: AFFECTED</em> / <em>smoke</em>) — review lại được khi có bug lọt.</p>
+          </div>
+        </div>
+        <div class="code-head">
+          <span class="file-tag">scripts/select-regression.ts — thêm 2 guard quan trọng</span>
+          <span class="lang-tag">TypeScript</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-typescript">// Guard 1: diff lan rộng hoặc chạm file dùng chung → chạy full, không hỏi AI
+const CORE_PATTERNS = [/^playwright\.config\.ts$/, /^pages\/base\.ts$/, /^tests\/fixtures\//];
+const touchingCore = files.some((f) =&gt; CORE_PATTERNS.some((re) =&gt; re.test(f)));
+const tooBroad = files.length &gt; 25;
+
+if (touchingCore || tooBroad) {
+  console.log('⚠️ Diff chạm core hoặc quá rộng → chạy toàn bộ suite.');
+  fs.writeFileSync('regression-selected.txt', map.map((e) =&gt; e.spec).join('\n'));
+  process.exit(0);
+}
+
+// Guard 2: AI lỗi/timeout → fallback chạy full, tuyệt đối không chạy rỗng
+try {
+  // ... gọi LLM như phần trên
+} catch (error) {
+  console.error('❌ Regression agent lỗi, fallback sang full suite:', error);
+  fs.writeFileSync('regression-selected.txt', map.map((e) =&gt; e.spec).join('\n'));
+  process.exit(0);
+}</code></pre>
+        <p class="ag-note">
+          🧪 Chỉ số cần theo dõi: <strong>escape rate</strong> (bug lọt qua bộ test đã lọc) và
+          <strong>selection accuracy</strong> (tỉ lệ spec được chọn mà thực sự fail ở full run). Mục tiêu thực tế:
+          giảm 50–70% thời gian CI mà escape rate không tăng.
+        </p>
+      </div>
+    </div>
+
+    <!-- ============ CARD 4: AI TEST REVIEWER ============ -->
+    <div class="pom-card agentics-card code-mapping-card">
+      <div class="pom-card-header">
+        <h3 id="ag-5"><span class="num-icon">🔍</span> 5. AI Review Agent — soi Playwright test PR như một senior reviewer</h3>
+        <span class="ag-version-pill">PR bot · rubric</span>
+      </div>
+      <p class="pom-card-sub">
+        Con người review test thường chỉ soi "chạy xanh chưa". Agent review soi được cả những thứ tinh vi hơn:
+        test có phụ thuộc thứ tự không, locator có dễ vỡ không, assertion có thật sự kiểm chứng hành vi không,
+        có hardcode secret không, có vi phạm POM không. Điểm mấu chốt: agent phải chấm theo
+        <strong>rubric cố định</strong> — nếu không, mỗi lần review sẽ cho một kết quả khác nhau.
+      </p>
+
+      <div class="ag-rubric">
+        <div class="ag-rubric-item"><span class="ag-sev ag-sev-block">BLOCKER</span> Hardcode credential / token trong spec</div>
+        <div class="ag-rubric-item"><span class="ag-sev ag-sev-block">BLOCKER</span> Dùng <code>waitForTimeout</code> để "chờ cho chắc"</div>
+        <div class="ag-rubric-item"><span class="ag-sev ag-sev-block">BLOCKER</span> Không có assertion nào kiểm chứng kết quả</div>
+        <div class="ag-rubric-item"><span class="ag-sev ag-sev-warn">WARN</span> Locator theo vị trí / class dễ đổi</div>
+        <div class="ag-rubric-item"><span class="ag-sev ag-sev-warn">WARN</span> Test phụ thuộc thứ tự hoặc state của test khác</div>
+        <div class="ag-rubric-item"><span class="ag-sev ag-sev-warn">WARN</span> Logic UI lặp lại thay vì đẩy vào Page Object</div>
+        <div class="ag-rubric-item"><span class="ag-sev ag-sev-info">INFO</span> Thiếu tag <code>@smoke</code> / <code>@regression</code></div>
+        <div class="ag-rubric-item"><span class="ag-sev ag-sev-info">INFO</span> Thiếu nhánh âm (invalid / empty / boundary)</div>
+      </div>
+
+      <div class="pom-tabs">
+        <button class="pom-tab-btn active" data-tab="ag-tab-rev-flow">Luồng hoạt động</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-rev-prompt">Prompt review (rubric-based)</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-rev-output">Output review mẫu</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-rev-ci">Chạy tự động trên GitHub</button>
+      </div>
+
+      <!-- Tab 4.1: flow -->
+      <div id="ag-tab-rev-flow" class="pom-tab-pane active">
+        <div class="tab-pane-info">
+          <strong>Review chỉ có giá trị khi nó chặn được merge xấu</strong> — nhưng không làm chậm người viết test.
+          Vì vậy agent chỉ <em>comment</em> và gắn nhãn, không tự sửa; BLOCKER thì mới fail check.
+        </div>
+        <ol class="ag-steps">
+          <li><strong>Trigger</strong>: PR mở/cập nhật và có file khớp <code>tests/**/*.spec.ts</code> hoặc <code>pages/**</code>.</li>
+          <li><strong>Thu thập ngữ cảnh</strong>: diff của PR, toàn bộ file sau khi sửa, và kết quả Playwright JSON report của lần chạy CI.</li>
+          <li><strong>Chấm theo rubric</strong>: agent đọc skill best practices rồi soi từng hạng mục, ghi rõ dòng + lý do.</li>
+          <li><strong>Đăng comment</strong>: gộp thành một comment có severity, kèm suggested diff — không spam từng dòng.</li>
+          <li><strong>Gate</strong>: có BLOCKER → fail check, bắt buộc sửa; chỉ WARN/INFO → comment advisory, không chặn.</li>
+        </ol>
+        <div class="code-head">
+          <span class="file-tag">Terminal — chạy review ở máy trước khi push</span>
+          <span class="lang-tag">Bash</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-bash"># 1. Lấy diff của nhánh hiện tại so với main, chỉ phần test
+git diff origin/main...HEAD -- 'tests/**' 'pages/**' &gt; /tmp/pr-tests.diff
+
+# 2. Kèm kết quả chạy để agent biết test có ổn định không
+npx playwright test --reporter=json &gt; /tmp/pw-report.json 2&gt;/dev/null || true
+
+# 3. Gọi agent review (ví dụ Claude Code CLI, đã cài Agent Skill ở mục 2)
+claude --prompt-file .github/prompts/review-playwright-tests.md --auto-approve
+
+# 4. Kiểm tra nhanh bằng grep trước khi tin agent
+grep -rn "waitForTimeout" tests/ || echo "OK: không có waitForTimeout"</code></pre>
+      </div>
+
+      <!-- Tab 4.2: review prompt -->
+      <div id="ag-tab-rev-prompt" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>Rubric nằm trong prompt, không nằm trong đầu reviewer.</strong> Prompt dưới đây buộc agent trả về
+          JSON có cấu trúc, nên có thể tự động đăng comment và đặt trạng thái check mà không cần đọc lại bằng mắt.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">.github/prompts/review-playwright-tests.md</span>
+          <span class="lang-tag">Markdown</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-markdown">Bạn là senior automation reviewer của một dự án Playwright TypeScript
+(kịch bản tham chiếu: tests/login.pom.spec.ts, pages/login.page.ts, pages/base.ts).
+
+## Ngữ cảnh được cung cấp
+- Diff của PR (chỉ file test/page object)
+- Nội dung đầy đủ của các file bị thay đổi
+- Kết quả JSON của lần chạy Playwright gần nhất (để biết test có flaky/retry không)
+
+## Rubric (bắt buộc chấm đủ, im lặng = bỏ sót)
+BLOCKER  · secret/credential hardcode trong spec
+BLOCKER  · waitForTimeout hoặc sleep thủ công
+BLOCKER  · test không có assertion kiểm chứng kết quả
+WARN     · locator dựa vào vị trí, class, hoặc text dễ đổi
+WARN     · test phụ thuộc thứ tự / dùng chung state với test khác
+WARN     · lặp lại chuỗi thao tác UI thay vì dùng Page Object/fixture
+WARN     · assertion quá lỏng (toBeVisible cho thứ cần toContainText)
+INFO     · thiếu tag @smoke / @regression
+INFO     · thiếu case âm hoặc boundary
+
+## Nguyên tắc trả lời
+1. Chỉ nêu vấn đề trong phần diff của PR, không "cải tạo" code cũ ngoài phạm vi.
+2. Mỗi vấn đề phải có: file, dòng, severity, lý do 1 câu, và đoạn code thay thế.
+3. Đề xuất phải dùng API Playwright đúng (expect auto-retry, getByRole, test.step).
+4. Không bịa dòng không tồn tại. Nếu thiếu dữ liệu, ghi "cần xác nhận".
+5. Trả về DUY NHẤT một khối JSON theo schema:
+   { "summary": string, "verdict": "APPROVE" | "REQUEST_CHANGES",
+     "findings": [{ "file": string, "line": number, "severity": "BLOCKER"|"WARN"|"INFO",
+                    "rule": string, "message": string, "suggestion": string }] }</code></pre>
+        <p class="ag-note">
+          🧩 Verdict nên là <strong>REQUEST_CHANGES</strong> nếu có BLOCKER; nếu chỉ có WARN/INFO thì APPROVE kèm
+          comment — tránh biến agent thành "cảnh sát" khiến team tắt bot.
+        </p>
+      </div>
+
+      <!-- Tab 4.3: sample output -->
+      <div id="ag-tab-rev-output" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>Comment phải đọc được trong 30 giây.</strong> Có tóm tắt, có verdict, rồi bảng finding sắp theo
+          severity — người viết test biết ngay phải sửa gì để PR đi tiếp.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">Comment mà bot đăng lên PR #128</span>
+          <span class="lang-tag">Markdown</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-markdown">## 🤖 Playwright Test Review — REQUEST_CHANGES
+
+**Tóm tắt:** PR thêm 2 test cho luồng login. Logic đúng nhưng cách chờ và
+locator khiến test dễ flaky trên CI; 1 BLOCKER cần sửa trước khi merge.
+
+| Severity | File | Dòng | Vấn đề |
+|---|---|---|---|
+| BLOCKER | tests/login.spec.ts | 24 | `waitForTimeout(3000)` thay cho expect auto-retry |
+| WARN | tests/login.spec.ts | 31 | Locator `#flash` bỏ qua `loginPage.flashMessage` (vi phạm POM) |
+| WARN | tests/login.spec.ts | 38 | Assertion chỉ `toBeVisible`, chưa kiểm chứng nội dung |
+| INFO | tests/login.spec.ts | 42 | Chưa gắn tag `@smoke` cho case đăng nhập thành công |
+
+### BLOCKER — dòng 24
+**Lý do:** `waitForTimeout` làm test chậm và vẫn flaky khi CI tải cao.
+
+```diff
+- await page.waitForTimeout(3000);
+- await expect(page.locator('#flash')).toContainText('You logged into a secure area!');
++ await expect(loginPage.flashMessage).toContainText('You logged into a secure area!');
+```
+
+### WARN — dòng 31
+**Lý do:** Spec đã có fixture `loginPage`; tương tác trực tiếp với `page` phá vỡ
+ranh giới POM và sẽ phải sửa ở nhiều file khi UI đổi.
+
+```diff
+- await page.locator('#flash').isVisible();
++ await expect(loginPage.flashMessage).toBeVisible();
+```
+
+**Verify sau khi sửa:** `npx playwright test tests/login.spec.ts --repeat-each=3`</code></pre>
+      </div>
+
+      <!-- Tab 4.4: CI wiring -->
+      <div id="ag-tab-rev-ci" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>Đặt reviewer sau khi suite đã chạy</strong> — agent cần biết test có xanh ổn định không thì mới phân
+          biệt được "code test viết kém" và "ứng dụng có bug thật". Dùng <code>gh</code> CLI để đăng comment và
+          <code>jq</code> để đọc verdict từ JSON của agent.
+        </div>
+        <div class="code-head">
+          <span class="file-tag">.github/workflows/review-playwright-pr.yml</span>
+          <span class="lang-tag">YAML</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-yaml">name: Review Playwright Test PR
+on:
+  pull_request:
+    paths:
+      - 'tests/**/*.spec.ts'
+      - 'pages/**'
+      - 'playwright.config.ts'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - uses: actions/setup-node@v4
+        with: { node-version: 'lts/*' }
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+
+      - name: Run tests to gather evidence
+        run: npx playwright test --reporter=json &gt; pw-report.json || true
+
+      - name: AI review (agent + Playwright best-practices skill)
+        id: review
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          git diff origin/${{ github.base_ref }}...HEAD -- 'tests/**' 'pages/**' &gt; pr-tests.diff
+          # Agent đọc prompt rubric + diff + report, in ra review.json
+          claude --prompt-file .github/prompts/review-playwright-tests.md \
+                 --auto-approve &gt; review.json
+          echo "verdict=$(jq -r .verdict review.json)" &gt;&gt; "$GITHUB_OUTPUT"
+
+      - name: Post review comment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr comment ${{ github.event.number }} --body-file review.md
+
+      - name: Fail check on BLOCKER
+        if: steps.review.outputs.verdict == 'REQUEST_CHANGES'
+        run: |
+          echo "::error::Playwright test PR có BLOCKER từ AI review — cần sửa trước khi merge."
+          exit 1</code></pre>
+        <p class="ag-note">
+          🔁 Kèm một nhãn <code>ai-review-ok</code> khi verdict = APPROVE để rule merge chỉ cần nhìn nhãn. Nếu bot
+          sai, người review gỡ nhãn — đó cũng là dữ liệu để cải tiến rubric.
+        </p>
+      </div>
+    </div>
+
+    <!-- ============ CARD 6: EXTENSIONS ============ -->
+    <div class="pom-card agentics-card code-mapping-card">
+      <div class="pom-card-header">
+        <h3 id="ag-6"><span class="num-icon">🧩</span> 6. Mở rộng — CLI/MCP, auto-triage và các agent khác trong pipeline</h3>
+        <span class="ag-version-pill">playwright-cli · MCP · triage</span>
+      </div>
+      <p class="pom-card-sub">
+        Trên đây là 5 chặng "must-have". Phần này là những mảnh ghép giúp hệ thống agentic chạy trơn trong dự án thật:
+        chọn giữa <strong>playwright-cli</strong> và <strong>MCP</strong>, nối <strong>auto-triage/self-healing</strong>
+        đã có trong repo này, và biết rõ <strong>ranh giới</strong> giữa việc nên và không nên giao cho agent.
+      </p>
+
+      <div class="pom-tabs">
+        <button class="pom-tab-btn active" data-tab="ag-tab-ext-cli">playwright-cli hay MCP?</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-ext-triage">Auto-triage &amp; self-healing trong repo này</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-ext-ideas">Các agent khác nên bổ sung</button>
+        <button class="pom-tab-btn" data-tab="ag-tab-ext-boundary">Ranh giới: nên / không nên</button>
+      </div>
+
+      <!-- Tab 6.1: CLI vs MCP -->
+      <div id="ag-tab-ext-cli" class="pom-tab-pane active">
+        <div class="tab-pane-info">
+          <strong>Hai cách để agent điều khiển browser, dùng cho hai mục đích khác nhau.</strong> Chọn sai thì agent
+          vừa tốn token vừa chậm; chọn đúng thì agent vừa đọc codebase lớn vừa tương tác được với app.
+        </div>
+        <div class="ag-cli-table">
+          <div class="ag-cli-row ag-cli-head">
+            <span>Tiêu chí</span><span>playwright-cli</span><span>Playwright MCP</span>
+          </div>
+          <div class="ag-cli-row">
+            <span>Phù hợp nhất</span>
+            <span>Coding agent làm việc trên codebase lớn (Claude Code, Copilot)</span>
+            <span>Vòng lặp agentic chuyên biệt, tự động hoá thăm dò</span>
+          </div>
+          <div class="ag-cli-row">
+            <span>Cách hoạt động</span>
+            <span>Agent chạy lệnh shell</span>
+            <span>LLM gọi tool với tham số có cấu trúc</span>
+          </div>
+          <div class="ag-cli-row">
+            <span>Chi phí token</span>
+            <span class="ag-good">Thấp — output gọn, skill nạp theo nhu cầu</span>
+            <span class="ag-warn">Cao — tool schema + snapshot nằm trong context</span>
+          </div>
+          <div class="ag-cli-row">
+            <span>Chế độ mặc định</span>
+            <span>Headless</span>
+            <span>Headed</span>
+          </div>
+          <div class="ag-cli-row">
+            <span>Cài đặt</span>
+            <span><code>npm install -g @playwright/cli@latest</code></span>
+            <span><code>npx @playwright/mcp@latest</code> trong config MCP client</span>
+          </div>
+          <div class="ag-cli-row">
+            <span>Trạng thái browser</span>
+            <span>Daemon + named sessions (<code>-s=todo-app</code>), có dashboard <code>playwright-cli show</code></span>
+            <span>Session bền, tự lưu cookie/login giữa các lần gọi</span>
+          </div>
+        </div>
+        <div class="code-head">
+          <span class="file-tag">Ví dụ cùng một việc — kiểm tra luồng thêm todo</span>
+          <span class="lang-tag">Bash</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-bash"># --- Cách 1: playwright-cli (agent chạy shell, token rẻ) ---
+playwright-cli open https://demo.playwright.dev/todomvc --headed
+playwright-cli type "Buy groceries"
+playwright-cli press Enter
+playwright-cli check e21
+playwright-cli snapshot
+playwright-cli screenshot
+
+# --- Cách 2: MCP (client gọi tool theo schema) ---
+# browser_navigate { url: "https://demo.playwright.dev/todomvc" }
+# browser_type     { target: "e5", text: "Buy groceries", submit: true }
+# browser_snapshot {}
+# browser_verify_text_visible { text: "Buy groceries" }
+
+# Cấu hình MCP client: { "mcpServers": { "playwright": {
+#   "command": "npx", "args": ["@playwright/mcp@latest"] } } }</code></pre>
+        <p class="ag-note">
+          🧰 MCP có thể bật thêm capability khi cần: <code>--caps=network</code> (mock request),
+          <code>--caps=storage</code> (cookie/localStorage), <code>--caps=testing</code>
+          (<code>browser_generate_locator</code>, assert element), <code>--caps=devtools</code> (tracing, video).
+        </p>
+      </div>
+
+      <!-- Tab 6.2: auto-triage in this repo -->
+      <div id="ag-tab-ext-triage" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>Repo này đã có sẵn nửa hệ thống self-healing</strong> — đây là ví dụ đọc code thật thay vì lý thuyết.
+          <code>utils/jevTriage.ts</code> phân loại nguyên nhân fail, <code>reporters/JevAutoTriageReporter.ts</code>
+          quyết định hành động, <code>utils/slackMock.ts</code> lo phần thông báo.
+        </div>
+        <div class="ag-flow-mini">
+          <div class="ag-flow-mini-step"><span>test fail</span></div>
+          <div class="ag-flow-mini-arrow">→</div>
+          <div class="ag-flow-mini-step"><span>reporter thu log + DOM snapshot</span></div>
+          <div class="ag-flow-mini-arrow">→</div>
+          <div class="ag-flow-mini-step"><span>jevTriage phân loại + confidence</span></div>
+          <div class="ag-flow-mini-arrow">→</div>
+          <div class="ag-flow-mini-step ag-flow-mini-split">
+            <span class="ag-branch ag-branch-heal">confidence ≥ 0.85 → gọi agent sửa POM, tạo PR</span>
+            <span class="ag-branch ag-branch-alert">ASSERTION / NETWORK → alert Slack cho QA</span>
+            <span class="ag-branch ag-branch-manual">còn lại → manual review</span>
+          </div>
+        </div>
+        <div class="code-head">
+          <span class="file-tag">reporters/JevAutoTriageReporter.ts — lõi quyết định</span>
+          <span class="lang-tag">TypeScript</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-typescript">// Với mỗi test fail, reporter đã lấy được { test, rootCause, confidence } từ jevTriage
+switch (result.rootCause) {
+  case 'ASSERTION':
+    // Test assert sai / dữ liệu đổi → KHÔNG tự sửa code, cảnh báo cho người
+    await sendSlackAlert(result.test, result.rootCause, result.confidence);
+    break;
+
+  case 'LOCATOR_ISSUE':
+    if (result.confidence &gt;= 0.85) {
+      // 1. Ghi system prompt ép agent chỉ được sửa locator trong Page Object
+      fs.writeFileSync(`ai-triage-logs/${cleanName}-instruction.txt`, instructionPrompt);
+
+      // 2. Gọi agent không tương tác — agent đọc DOM rồi mở PR fix
+      execSync(`claude --prompt-file ${promptPath} --auto-approve`, { stdio: 'inherit' });
+    } else {
+      console.log(`⚠️ Nghi LOCATOR_ISSUE nhưng confidence thấp → QA review.`);
+    }
+    break;
+
+  default:
+    console.log(`🔍 Cần manual review: ${result.test}`);
+}</code></pre>
+        <div class="ag-compare">
+          <div class="ag-compare-col ag-compare-do">
+            <h4>✅ Điểm mạnh của thiết kế hiện tại</h4>
+            <ul>
+              <li>Chỉ auto-heal khi confidence cao — không "sửa bừa" để có test xanh.</li>
+              <li>Prompt ép agent sửa <strong>locator trong POM</strong>, giữ encapsulation.</li>
+              <li>Lưu log + DOM snapshot làm bằng chứng, review lại được sau này.</li>
+              <li>Tách rõ 3 nhánh: tự sửa · cảnh báo · thủ công.</li>
+            </ul>
+          </div>
+          <div class="ag-compare-col ag-compare-dont">
+            <h4>🔧 Nên nâng cấp tiếp</h4>
+            <ul>
+              <li>Ghép <strong>healer agent chính thức</strong> thay cho CLI tự gọi, để có guardrail và vòng re-run chuẩn.</li>
+              <li>Đẩy PR fix qua AI Reviewer (mục 5) trước khi merge.</li>
+              <li>Ghi <code>rootCause</code> + confidence vào metadata test để theo dõi flaky theo thời gian.</li>
+              <li>Dùng <code>playwright-cli</code> session để agent tự mở lại app khi cần xác minh locator mới.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 6.3: other agents -->
+      <div id="ag-tab-ext-ideas" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>Bốn agent nữa đáng đầu tư sau khi 5 chặng trên đã ổn định.</strong> Mỗi cái đều gắn với một đau đầu
+          cụ thể của team automation, không phải "làm cho oai".
+        </div>
+        <div class="ag-ideas-grid">
+          <div class="ag-idea">
+            <span class="ag-idea-icon">🌀</span>
+            <h4>Flaky Hunter</h4>
+            <p>Đọc lịch sử kết quả, phát hiện test fail ngắt quãng, đề xuất nguyên nhân (timing, dữ liệu chung,
+              animation) và tự tạo PR sửa hoặc quarantine kèm hạn xem lại.</p>
+            <p class="ag-idea-signal">Dấu hiệu cần: cùng test lúc xanh lúc đỏ trên cùng commit.</p>
+          </div>
+          <div class="ag-idea">
+            <span class="ag-idea-icon">🕳️</span>
+            <h4>Coverage Gap</h4>
+            <p>Đối chiếu danh sách route/tính năng của app với <code>TESTCASES.md</code> và các spec hiện có, rồi đề
+              xuất test case còn thiếu theo dạng plan Markdown — nạp thẳng vào generator.</p>
+            <p class="ag-idea-signal">Dấu hiệu cần: tính năng mới ra mà không ai biết phải test gì.</p>
+          </div>
+          <div class="ag-idea">
+            <span class="ag-idea-icon">🐞</span>
+            <h4>Bug Reproducer</h4>
+            <p>Từ ticket (mô tả + ảnh + log) và DOM snapshot, sinh test Playwright tối thiểu tái hiện bug — biến mọi
+              bug thành regression test trước khi fix.</p>
+            <p class="ag-idea-signal">Dấu hiệu cần: bug quay lại nhiều lần ở cùng màn hình.</p>
+          </div>
+          <div class="ag-idea">
+            <span class="ag-idea-icon">📮</span>
+            <h4>Nightly Digest</h4>
+            <p>Tóm tắt kết quả chạy đêm: bao nhiêu fail, nhóm theo root cause, test nào mới flaky, so với hôm qua —
+              gửi vào Slack/Teams bằng Block Kit.</p>
+            <p class="ag-idea-signal">Dấu hiệu cần: report dài, không ai đọc hết.</p>
+          </div>
+        </div>
+        <div class="code-head">
+          <span class="file-tag">scripts/flaky-report.ts — nền tảng dữ liệu cho Flaky Hunter</span>
+          <span class="lang-tag">TypeScript</span>
+          <button class="copy-btn" type="button">Sao chép</button>
+        </div>
+        <pre><code class="language-typescript">import { defineConfig, type Reporter } from '@playwright/test';
+import * as fs from 'fs';
+
+// Reporter tích luỹ kết quả mỗi lần chạy vào 1 file JSONL để phân tích xu hướng
+export default class FlakyTracker implements Reporter {
+  private results: { title: string; status: string; retries: number; duration: number }[] = [];
+
+  onTestEnd(test, result) {
+    this.results.push({
+      title: test.titlePath().join(' › '),
+      status: result.status,
+      retries: result.retry,        // retry > 0 nghĩa là lần đầu đã fail
+      duration: result.duration,
+    });
+  }
+
+  async onEnd() {
+    const line = this.results.map((r) =&gt; JSON.stringify(r)).join('\n');
+    fs.appendFileSync('test-results/history.jsonl', line + '\n');
+
+    const flaky = this.results.filter((r) =&gt; r.retries &gt; 0);
+    if (flaky.length) {
+      console.log(`🌀 ${flaky.length} test cần retry — ứng viên Flaky Hunter:`);
+      for (const f of flaky) console.log(` - ${f.title} (retry ${f.retries})`);
+    }
+  }
+}</code></pre>
+        <p class="ag-note">
+          📈 Dữ liệu lịch sử là tài sản: <code>test-results/history.jsonl</code> cho phép agent tính tỉ lệ flaky
+          theo thời gian và chỉ đề xuất quarantine khi có đủ bằng chứng, thay vì "đoán theo một lần fail".
+        </p>
+      </div>
+
+      <!-- Tab 6.4: boundaries -->
+      <div id="ag-tab-ext-boundary" class="pom-tab-pane">
+        <div class="tab-pane-info">
+          <strong>Agent giỏi việc lặp lại, dở việc quyết định thay con người.</strong> Bảng này là "hợp đồng" nên
+          thống nhất trong team trước khi bật bất kỳ automation nào.
+        </div>
+        <div class="ag-compare">
+          <div class="ag-compare-col ag-compare-do">
+            <h4>✅ Nên giao cho agent</h4>
+            <ul>
+              <li>Sinh test plan, sinh spec từ plan, refactor codegen thô.</li>
+              <li>Debug khi có ngữ cảnh đầy đủ (Copy prompt, trace, HTML report).</li>
+              <li>Sửa locator trong Page Object khi UI đổi.</li>
+              <li>Chọn tập test regression theo PR diff (kèm guardrail).</li>
+              <li>Review PR theo rubric và gợi ý diff cụ thể.</li>
+              <li>Phân loại nguyên nhân fail, tóm tắt báo cáo chạy đêm.</li>
+            </ul>
+          </div>
+          <div class="ag-compare-col ag-compare-dont">
+            <h4>🚫 Không giao cho agent</h4>
+            <ul>
+              <li>Quyết định expected value nghiệp vụ (giá, quyền, trạng thái đơn).</li>
+              <li>Tự merge PR do chính agent tạo.</li>
+              <li>Đổi assertion để test xanh mà không có người duyệt.</li>
+              <li>Bỏ qua / giảm phạm vi test khi confidence thấp.</li>
+              <li>Đụng tới dữ liệu production hoặc credential thật.</li>
+              <li>Được cấp quyền ghi rộng hơn mức cần thiết trong CI.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ag-checklist ag-checklist-final">
+          <label class="ag-check"><input type="checkbox" disabled checked /> <span>Agent luôn có <strong>human-in-the-loop</strong> ở bước merge, và mọi thay đổi đều đi qua Pull Request.</span></label>
+          <label class="ag-check"><input type="checkbox" disabled checked /> <span>Mọi kết luận của agent đều kèm <strong>confidence + lý do</strong>, ghi lại vào artifact để audit.</span></label>
+          <label class="ag-check"><input type="checkbox" disabled checked /> <span>Khi agent lỗi hoặc do dự, hệ thống mặc định <strong>làm nhiều hơn</strong> (chạy full test, alert cho người) chứ không im lặng.</span></label>
+          <label class="ag-check"><input type="checkbox" disabled checked /> <span>Prompt và rubric được version hoá trong repo (<code>.github/prompts/</code>), sửa được qua PR như code.</span></label>
+          <label class="ag-check"><input type="checkbox" disabled checked /> <span>Chi phí AI được theo dõi; tối ưu bằng cách <strong>heuristic trước, LLM sau</strong>.</span></label>
+        </div>
+        <p class="ag-note ag-note-final">
+          🎯 Tóm lại: <strong>Playwright's Agentics</strong> không phải "để AI viết test hộ", mà là dùng agent cho
+          đúng ba việc — <em>sinh nhanh, chọn đúng, sửa kịp</em> — còn con người giữ phần quyết định điều gì là đúng.
+          Bắt đầu nhỏ: bật <em>Copy prompt</em> cho cả team trước, rồi <code>init-agents</code> cho planner/generator,
+          sau đó mới tới regression selector và reviewer.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
   <!-- About Me Section -->
   <section id="about" class="about-section">
+    <header class="sec-head">
+      <span class="sec-kicker"><b>07</b> Tác giả</span>
+      <h2>Hey, I'm Ha Do 👋</h2>
+      <p class="sec-lead">
+        Automation Test Engineer đam mê chất lượng phần mềm, chia sẻ kinh nghiệm thực chiến về Playwright và Test Automation.
+      </p>
+    </header>
+
     <div class="about-hero">
       <div class="about-content">
-        <span class="about-badge">About Me</span>
-        <h2 class="about-title">Hey, I'm Ha Do 👋</h2>
-        <p class="about-tagline">
-          Automation Test Engineer đam mê chất lượng phần mềm, chia sẻ kinh nghiệm thực chiến về Playwright và Test Automation.
-        </p>
         <p class="about-bio">
           Chào bạn! Mình xây dựng <strong>PW Guide</strong> nhằm mục đích hệ thống hóa toàn bộ quá trình học và thực hành kiểm thử tự động với Playwright: từ việc quan sát phân tích ứng dụng web (the-internet), đặc tả từng bước kiểm thử thủ công rõ ràng, cho đến chuyển hóa thành kịch bản tự động hóa tối ưu, sạch sẽ và chuẩn Page Object Model.
         </p>
