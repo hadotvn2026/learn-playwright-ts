@@ -13,4 +13,5 @@ ai-triage-logs/
 downloads/
 .DS_Store
 *.log
-
+.playwright-cli/
+.playwright-mcp/
