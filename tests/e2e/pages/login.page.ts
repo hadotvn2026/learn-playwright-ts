@@ -9,9 +9,8 @@ export class LoginPage {
         this.page = page;
     }
 
-    //methods <user behavior methods> ==> define first 
     async open() {
-        this.page.goto('https://the-internet.herokuapp.com/login');
+        await this.page.goto('https://the-internet.herokuapp.com/login');
     }
 
     async login(username: string, password: string) {
@@ -41,6 +40,7 @@ export class LoginPage {
     }
 
     async getErrrorMessage() {
-        return await this.page.locator('.error').textContent();
+        const text = await this.page.locator('#flash.error, .error, #flash').textContent();
+        return text?.replace(/\s+/g, ' ').trim() || '';
     }
 }
