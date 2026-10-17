@@ -1,4 +1,4 @@
-import { test, expect } from '../pages/base';
+import { test, expect } from '../../pages/base';
 
 test.describe('Heroku App - Login with POM and Fixture', () => {
     test.beforeEach(async ({ loginPage }) => {
